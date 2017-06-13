@@ -1,0 +1,25 @@
+/* Visibility rules */
+
+@media (min-width: 1201px) {
+    .hidden-on-large-monitor {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .hidden-on-small-monitor {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-on-tablet {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hidden-on-phone {
+        display: none !important;
+    }
+}
