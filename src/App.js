@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Button} from 'semantic-ui-react';
+import NavBar from './NavBar.js';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Button content='Hello Semantic'/>
+      <NavBar/>
     );
   }
 }
