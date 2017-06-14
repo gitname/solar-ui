@@ -36,12 +36,6 @@ class EnergyStorageChart extends Component {
 
     const yAxisLabel = 'kW⋅h';
 
-    // Store these values in the component state so React re-renders the component whenever these values change.
-    this.state = {
-      occupiedBarValues: occupiedBarInitialValues,
-      vacantBarValues: vacantBarInitialValues
-    };
-
     this.occupiedBarBackgroundColors = [
       'rgba(65, 198, 94, 0.5)',
       'rgba(65, 198, 94, 0.5)',
@@ -97,6 +91,12 @@ class EnergyStorageChart extends Component {
           }
         }]
       }
+    };
+
+    // Store these values in the component state so React re-renders the component whenever these values change.
+    this.state = {
+      occupiedBarValues: occupiedBarInitialValues,
+      vacantBarValues: vacantBarInitialValues
     };
   }
 
