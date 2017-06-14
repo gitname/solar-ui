@@ -64,7 +64,6 @@ class SolarRadianceChart extends Component {
       },
       scales: {
         xAxes: [{
-          stacked: true,
           scaleLabel: {
             display: true,
             labelString: xAxisLabel
@@ -78,7 +77,6 @@ class SolarRadianceChart extends Component {
             display: true,
             labelString: yAxisLabel
           },
-          stacked: true,
           ticks: {
             beginAtZero: true,
             suggestedMax: highestSolarRadiationValue
