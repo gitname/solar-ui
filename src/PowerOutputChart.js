@@ -6,13 +6,15 @@ class PowerOutputChart extends Component {
   constructor(props) {
     super(props);
 
-    const powerValues = [5, 6, 6, 5, 5, 5, 6, 6, 6, 7];
+    const powerValues = [5.3, 6.2, 6.5, 5.6, 5.6, 5.9, 6.2, 6.5, 6.8, 7.2];
 
     const maximumPowerValue = 10;
 
     const xAxisLabel = 'Time';
 
     const yAxisLabel = 'kW';
+
+    this.powerLineLabel = 'Power Output';
 
     this.powerLineBackgroundColor = 'rgba(65, 198, 94, 0.5)';
 
@@ -21,12 +23,8 @@ class PowerOutputChart extends Component {
     this.timeLabels = ['', '', '', '', '', '', '', '', '', ''];
 
     this.options = {
-      events: [],
       legend: {
         display: false
-      },
-      tooltips: {
-        enabled: false
       },
       scales: {
         xAxes: [{
@@ -48,6 +46,22 @@ class PowerOutputChart extends Component {
             suggestedMax: maximumPowerValue
           }
         }]
+      },
+      tooltips: {
+        position: 'nearest',
+        intersect: false,
+        callbacks: {
+          // Display the line label as the tooltip title.
+          title: function (tooltipItem, data) {
+            const datasetIndex = tooltipItem[0].datasetIndex;
+            return data.datasets[datasetIndex].label;
+          },
+          // Display a truncated version of the power value as the tooltip text.
+          label: function (tooltipItem, data) {
+            const powerValue = tooltipItem.yLabel;
+            return powerValue.toFixed(1) + ' kW';
+          }
+        }
       }
     };
 
@@ -62,6 +76,7 @@ class PowerOutputChart extends Component {
     const data = {
       labels: this.timeLabels,
       datasets: [{
+        label: this.powerLineLabel,
         data: this.state.powerValues,
         backgroundColor: this.powerLineBackgroundColor,
         borderColor: this.powerLineBorderColor,

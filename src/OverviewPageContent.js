@@ -13,7 +13,7 @@ class OverviewPageContent extends Component {
           <Grid.Column width={8}>
             <Segment>
               <Header icon='dashboard' content='Power Output'/>
-              <p>Power being output by the inverter.</p>
+              <p>Power output by the inverter.</p>
               <PowerOutputChart/>
             </Segment>
           </Grid.Column>

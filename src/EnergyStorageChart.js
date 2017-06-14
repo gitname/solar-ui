@@ -36,6 +36,10 @@ class EnergyStorageChart extends Component {
 
     const yAxisLabel = 'kW⋅h';
 
+    this.occupiedBarLabel = 'Energy Stored';
+
+    this.vacantBarLabel = 'Free Space';
+
     this.occupiedBarBackgroundColors = [
       'rgba(65, 198, 94, 0.5)',
       'rgba(65, 198, 94, 0.5)',
@@ -61,12 +65,8 @@ class EnergyStorageChart extends Component {
     ];
 
     this.options = {
-      events: [],
       legend: {
         display: false
-      },
-      tooltips: {
-        enabled: false
       },
       scales: {
         xAxes: [{
@@ -90,6 +90,20 @@ class EnergyStorageChart extends Component {
             suggestedMax: highestBarStackValue
           }
         }]
+      },
+      tooltips: {
+        callbacks: {
+          // Display the bar label as the tooltip title.
+          title: function (tooltipItem, data) {
+            const datasetIndex = tooltipItem[0].datasetIndex;
+            return data.datasets[datasetIndex].label;
+          },
+          // Display a truncated version of the bar value as the tooltip value.
+          label: function (tooltipItem, data) {
+            const barValue = tooltipItem.yLabel;
+            return barValue.toFixed(1) + ' kW⋅h';
+          }
+        }
       }
     };
 
@@ -105,14 +119,20 @@ class EnergyStorageChart extends Component {
     const data = {
       labels: this.barStackLabels,
       datasets: [{
+        label: this.occupiedBarLabel,
         data: this.state.occupiedBarValues,
         backgroundColor: this.occupiedBarBackgroundColors,
         borderColor: this.vacantBarBorderColors,
+        hoverBackgroundColor: this.occupiedBarBackgroundColors,
+        hoverBorderColor: this.vacantBarBorderColors,
         borderWidth: 1
       }, {
+        label: this.vacantBarLabel,
         data: this.state.vacantBarValues,
         backgroundColor: this.vacantBarBackgroundColors,
         borderColor: this.vacantBarBorderColors,
+        hoverBackgroundColor: this.vacantBarBackgroundColors,
+        hoverBorderColor: this.vacantBarBorderColors,
         borderWidth: 1
       }]
     };
