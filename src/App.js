@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Sidebar} from 'semantic-ui-react';
 import VerticalNavBar from './VerticalNavBar.js';
 import HorizontalNavBar from './HorizontalNavBar.js';
 import OverviewPageContent from './OverviewPageContent.js';
@@ -28,10 +29,10 @@ class App extends Component {
     return (
       <div>
         <VerticalNavBar visible={this.state.sidebarVisible} toggleSidebar={this.toggleSidebar.bind(this)}/>
-        <div className='pusher'>
+        <Sidebar.Pusher>
           <HorizontalNavBar toggleSidebar={this.toggleSidebar.bind(this)}/>
           <OverviewPageContent/>
-        </div>
+        </Sidebar.Pusher>
       </div>
     );
   }
