@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import VerticalNavBar from './VerticalNavBar.js';
 import HorizontalNavBar from './HorizontalNavBar.js';
+import OverviewPageContent from './OverviewPageContent.js';
 import './App.css';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
         <VerticalNavBar visible={this.state.sidebarVisible} toggleSidebar={this.toggleSidebar.bind(this)}/>
         <div className='pusher'>
           <HorizontalNavBar toggleSidebar={this.toggleSidebar.bind(this)}/>
+          <OverviewPageContent/>
         </div>
       </div>
     );
