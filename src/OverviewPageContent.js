@@ -10,14 +10,14 @@ class OverviewPageContent extends Component {
       <Container>
         <Header as='h1' content='Overview' subheader='System status in a nutshell'/>
         <Grid stackable stretched>
-          <Grid.Column width={8}>
+          <Grid.Column computer={8} largeScreen={4} widescreen={4}>
             <Segment>
               <Header icon='dashboard' content='Power Output'/>
               <p>Power output by the inverter.</p>
               <PowerOutputChart/>
             </Segment>
           </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column computer={8} largeScreen={4} widescreen={4}>
             <Segment>
               <Header icon='high battery' content='Energy Storage'/>
               <p>Energy stored in each battery.</p>
