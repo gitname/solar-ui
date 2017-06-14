@@ -4,7 +4,9 @@
   "private": true,
   "homepage": "http://gitname.github.io/solar-ui",
   "dependencies": {
+    "chart.js": "^2.6.0",
     "react": "^15.5.4",
+    "react-chartjs-2": "^2.1.0",
     "react-dom": "^15.5.4",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.5"
