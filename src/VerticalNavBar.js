@@ -5,7 +5,7 @@ import './VerticalNavBar.css';
 class VerticalNavBar extends Component {
   render() {
     return (
-      <Sidebar as={Menu} animation='overlay' vertical inverted visible={this.props.visible}>
+      <Sidebar as={Menu} animation='overlay' vertical inverted size='large' visible={this.props.visible}>
         <Menu.Item onClick={this.props.toggleSidebar}>
           <span>
             <Icon name='remove'/>

@@ -5,7 +5,7 @@ import './HorizontalNavBar.css';
 class HorizontalNavBar extends Component {
   render() {
     return (
-      <Menu inverted className='horizontal-nav-bar'>
+      <Menu inverted size='large' className='horizontal-nav-bar'>
         <Container>
           <Menu.Item as='a' icon='sidebar' onClick={this.props.toggleSidebar}
                      className='hidden-on-small-monitor hidden-on-large-monitor'/>
