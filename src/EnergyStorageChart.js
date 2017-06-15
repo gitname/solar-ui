@@ -65,6 +65,7 @@ class EnergyStorageChart extends Component {
     ];
 
     this.options = {
+      maintainAspectRatio: false,
       legend: {
         display: false
       },
@@ -138,7 +139,7 @@ class EnergyStorageChart extends Component {
     };
 
     return (
-      <div>
+      <div className='energy-storage-chart--chart-wrapper'>
         <Bar data={data} options={this.options}/>
       </div>
     );

@@ -6,11 +6,11 @@ class PowerOutputChart extends Component {
   constructor(props) {
     super(props);
 
-    const powerValues = [5.3, 6.2, 6.5, 5.6, 5.6, 5.9, 6.2, 6.5, 6.8, 7.2];
+    const powerValues = [5.3, 6.2, 5.3, 6.2, 5.3];
 
     const maximumPowerValue = 10;
 
-    const xAxisLabel = 'Time';
+    const xAxisLabel = 'Time (seconds)';
 
     const yAxisLabel = 'kW';
 
@@ -20,9 +20,10 @@ class PowerOutputChart extends Component {
 
     this.powerLineBorderColor = 'rgba(163, 163, 163, 0.5)';
 
-    this.timeLabels = ['', '', '', '', '', '', '', '', '', ''];
+    this.timeLabels = ['-4', '-3', '-2', '-1', 'Now'];
 
     this.options = {
+      maintainAspectRatio: false,
       legend: {
         display: false
       },
@@ -86,7 +87,7 @@ class PowerOutputChart extends Component {
     };
 
     return (
-      <div>
+      <div className='power-output-chart--chart-wrapper'>
         <Line data={data} options={this.options}/>
       </div>
     );

@@ -59,6 +59,7 @@ class SolarRadianceChart extends Component {
     ];
 
     this.options = {
+      maintainAspectRatio: false,
       legend: {
         display: false
       },
@@ -122,7 +123,7 @@ class SolarRadianceChart extends Component {
     };
 
     return (
-      <div>
+      <div className='solar-radiance-chart--chart-wrapper'>
         <Bar data={data} options={this.options}/>
       </div>
     );
