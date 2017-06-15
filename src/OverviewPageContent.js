@@ -3,6 +3,7 @@ import {Container, Grid, Header, Segment} from 'semantic-ui-react';
 import EnergyStorageChart from './EnergyStorageChart.js';
 import PowerOutputChart from './PowerOutputChart.js';
 import SolarRadianceChart from './SolarRadianceChart.js';
+import LatestEventsFeed from "./LatestEventsFeed.js";
 import './OverviewPageContent.css';
 
 class OverviewPageContent extends Component {
@@ -30,6 +31,13 @@ class OverviewPageContent extends Component {
               <Header icon='high battery' content='Energy Storage'/>
               <p>Energy stored in each battery.</p>
               <EnergyStorageChart/>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column computer={8} largeScreen={4} widescreen={4}>
+            <Segment>
+              <Header icon='clock' content='Latest Events'/>
+              <p>Latest events involving the system.</p>
+              <LatestEventsFeed/>
             </Segment>
           </Grid.Column>
         </Grid>
