@@ -16,9 +16,9 @@ class PowerOutputChart extends Component {
 
     this.powerLineLabel = 'Power Output';
 
-    this.powerLineBackgroundColor = 'rgba(65, 198, 94, 0.5)';
+    this.powerLineBackgroundColor = 'rgba(65, 198, 94, 0.0)';
 
-    this.powerLineBorderColor = 'rgba(163, 163, 163, 0.5)';
+    this.powerLineBorderColor = 'rgba(65, 198, 94, 1)';
 
     this.timeLabels = ['-4', '-3', '-2', '-1', 'Now'];
 

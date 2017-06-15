@@ -41,15 +41,15 @@ class EnergyStorageChart extends Component {
     this.vacantBarLabel = 'Free Space';
 
     this.occupiedBarBackgroundColors = [
-      'rgba(65, 198, 94, 0.5)',
-      'rgba(65, 198, 94, 0.5)',
-      'rgba(65, 198, 94, 0.5)'
+      'rgba(65, 198, 94, 1)',
+      'rgba(65, 198, 94, 1)',
+      'rgba(65, 198, 94, 1)'
     ];
 
     this.vacantBarBackgroundColors = [
-      'rgba(163, 163, 163, 0.25)',
-      'rgba(163, 163, 163, 0.25)',
-      'rgba(163, 163, 163, 0.25)'
+      'rgba(163, 163, 163, 0.1)',
+      'rgba(163, 163, 163, 0.1)',
+      'rgba(163, 163, 163, 0.1)'
     ];
 
     this.vacantBarBorderColors = [
