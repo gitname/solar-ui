@@ -14,6 +14,8 @@ class PowerOutputChart extends Component {
 
     const yAxisLabel = 'kW';
 
+    this.initialPointRadius = 0;
+
     this.powerLineLabel = 'Power Output';
 
     this.powerLineBackgroundColor = 'rgba(65, 198, 94, 0.0)';
@@ -49,8 +51,6 @@ class PowerOutputChart extends Component {
         }]
       },
       tooltips: {
-        position: 'nearest',
-        intersect: false,
         callbacks: {
           // Display the line label as the tooltip title.
           title: function (tooltipItem, data) {
@@ -68,8 +68,21 @@ class PowerOutputChart extends Component {
 
     // Store these values in the component state so React re-renders the component whenever these values change.
     this.state = {
-      powerValues: powerValues
+      powerValues: powerValues,
+      pointRadius: this.initialPointRadius
     };
+  }
+
+  emphasizePoints() {
+    this.setState({
+      pointRadius: this.initialPointRadius + 2
+    });
+  }
+
+  deemphasizePoints() {
+    this.setState({
+      pointRadius: this.initialPointRadius
+    });
   }
 
   render() {
@@ -82,12 +95,14 @@ class PowerOutputChart extends Component {
         backgroundColor: this.powerLineBackgroundColor,
         borderColor: this.powerLineBorderColor,
         borderWidth: 1,
-        pointRadius: 0
+        pointRadius: this.state.pointRadius
       }]
     };
 
     return (
-      <div className='power-output-chart--chart-wrapper'>
+      <div className='power-output-chart--chart-wrapper'
+           onMouseEnter={this.emphasizePoints.bind(this)}
+           onMouseLeave={this.deemphasizePoints.bind(this)}>
         <Line data={data} options={this.options}/>
       </div>
     );
