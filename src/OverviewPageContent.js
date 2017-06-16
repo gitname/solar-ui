@@ -4,6 +4,7 @@ import EnergyStorageChart from './EnergyStorageChart.js';
 import PowerOutputChart from './PowerOutputChart.js';
 import SolarRadianceChart from './SolarRadianceChart.js';
 import LatestEventsFeed from "./LatestEventsFeed.js";
+import PanelStatusTable from "./PanelStatusTable.js";
 import './OverviewPageContent.css';
 
 class OverviewPageContent extends Component {
@@ -38,6 +39,13 @@ class OverviewPageContent extends Component {
               <Header icon='clock' content='Latest Events'/>
               <p>Latest events involving the system.</p>
               <LatestEventsFeed/>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <Segment>
+              <Header icon='options' content='Panel Status'/>
+              <p>Status of each panel.</p>
+              <PanelStatusTable/>
             </Segment>
           </Grid.Column>
         </Grid>

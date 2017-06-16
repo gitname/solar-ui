@@ -1,0 +1,7 @@
+@media (max-width: 767px) {
+    .power-consumption-report--right-button {
+        float: none !important;
+        margin-top: 1em !important;
+        margin-left: 0 !important;
+    }
+}
