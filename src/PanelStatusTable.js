@@ -168,7 +168,7 @@ class PanelStatusTable extends Component {
     }
 
     return (
-      <Table celled compact definition>
+      <Table celled compact definition className='panel-status-table'>
         <Table.Header fullWidth>
           <Table.Row>
             <Table.HeaderCell>Enabled</Table.HeaderCell>
@@ -191,7 +191,6 @@ class PanelStatusTable extends Component {
               </Button.Group>
 
               <Button size='small' color='green' icon labelPosition='left' floated='right'
-                      className='power-consumption-report--right-button'
                       onClick={this.forkOnGitHub}>
                 <Icon name='fork'/> Fork on GitHub
               </Button>
