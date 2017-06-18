@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
+import palette from '../../lib/color';
 import './SolarRadianceChart.css';
 
 class SolarRadianceChart extends Component {
@@ -26,25 +27,25 @@ class SolarRadianceChart extends Component {
     this.seriesLabel = 'Solar Radiance';
 
     this.barBackgroundColors = [
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)'
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen
     ];
 
     this.barBorderColors = [
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)'
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen
     ];
 
     this.panelNumbers = [

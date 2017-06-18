@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
+import palette from '../../lib/color';
 import './PowerOutputChart.css';
 
 class PowerOutputChart extends Component {
@@ -18,9 +19,9 @@ class PowerOutputChart extends Component {
 
     this.powerLineLabel = 'Power Output';
 
-    this.powerLineBackgroundColor = 'rgba(65, 198, 94, 0.0)';
+    this.powerLineBackgroundColor = palette.lightGreen.setAlpha(0);
 
-    this.powerLineBorderColor = 'rgba(65, 198, 94, 1)';
+    this.powerLineBorderColor = palette.lightGreen;
 
     this.timeLabels = ['-4', '-3', '-2', '-1', 'Now'];
 

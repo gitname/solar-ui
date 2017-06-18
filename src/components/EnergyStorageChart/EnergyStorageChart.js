@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
+import palette from '../../lib/color';
 import './EnergyStorageChart.css';
 
 class EnergyStorageChart extends Component {
@@ -41,21 +42,21 @@ class EnergyStorageChart extends Component {
     this.vacantBarLabel = 'Free Space';
 
     this.occupiedBarBackgroundColors = [
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)',
-      'rgba(65, 198, 94, 1)'
+      palette.lightGreen,
+      palette.lightGreen,
+      palette.lightGreen
     ];
 
     this.vacantBarBackgroundColors = [
-      'rgba(163, 163, 163, 0.1)',
-      'rgba(163, 163, 163, 0.1)',
-      'rgba(163, 163, 163, 0.1)'
+      palette.lightGray.setAlpha(0.1),
+      palette.lightGray.setAlpha(0.1),
+      palette.lightGray.setAlpha(0.1)
     ];
 
     this.vacantBarBorderColors = [
-      'rgba(163, 163, 163, 0.5)',
-      'rgba(163, 163, 163, 0.5)',
-      'rgba(163, 163, 163, 0.5)'
+      palette.lightGray.setAlpha(0.5),
+      palette.lightGray.setAlpha(0.5),
+      palette.lightGray.setAlpha(0.5)
     ];
 
     this.barStackLabels = [
