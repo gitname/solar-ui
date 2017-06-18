@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Icon, Menu, Sidebar} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './VerticalNavBar.css';
 
 class VerticalNavBar extends Component {
@@ -21,5 +22,10 @@ class VerticalNavBar extends Component {
     );
   }
 }
+
+VerticalNavBar.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  toggleSidebar: PropTypes.func.isRequired
+};
 
 export default VerticalNavBar;

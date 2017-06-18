@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Dropdown, Icon, Menu} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './HorizontalNavBar.css';
 
 class HorizontalNavBar extends Component {
@@ -34,5 +35,9 @@ class HorizontalNavBar extends Component {
     );
   }
 }
+
+HorizontalNavBar.propTypes = {
+  toggleSidebar: PropTypes.func.isRequired
+};
 
 export default HorizontalNavBar;
