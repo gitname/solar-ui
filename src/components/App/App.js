@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Sidebar} from 'semantic-ui-react';
-import VerticalNavBar from './VerticalNavBar.js';
-import HorizontalNavBar from './HorizontalNavBar.js';
-import OverviewPageContent from './OverviewPageContent.js';
+import VerticalNavBar from '../VerticalNavBar/VerticalNavBar';
+import HorizontalNavBar from '../HorizontalNavBar/HorizontalNavBar';
+import OverviewPageContent from '../OverviewPageContent/OverviewPageContent';
 import './App.css';
 
 class App extends Component {

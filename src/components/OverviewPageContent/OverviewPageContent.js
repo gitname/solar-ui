@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Container, Grid, Header, Segment} from 'semantic-ui-react';
-import EnergyStorageChart from './EnergyStorageChart.js';
-import PowerOutputChart from './PowerOutputChart.js';
-import SolarRadianceChart from './SolarRadianceChart.js';
-import LatestEventsFeed from "./LatestEventsFeed.js";
-import PanelStatusTable from "./PanelStatusTable.js";
+import EnergyStorageChart from '../EnergyStorageChart/EnergyStorageChart';
+import PowerOutputChart from '../PowerOutputChart/PowerOutputChart';
+import SolarRadianceChart from '../SolarRadianceChart/SolarRadianceChart';
+import LatestEventsFeed from "../LatestEventsFeed/LatestEventsFeed";
+import PanelStatusTable from "../PanelStatusTable/PanelStatusTable";
 import './OverviewPageContent.css';
 
 class OverviewPageContent extends Component {
