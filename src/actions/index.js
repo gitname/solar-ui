@@ -5,3 +5,17 @@ export const toggleSidebarVisibility = function () {
   };
   return action;
 };
+
+export const enablePanels = function (panelIds) {
+  return {
+    type: 'ENABLE_PANELS',
+    panelIds: panelIds
+  };
+};
+
+export const disablePanels = function (panelIds) {
+  return {
+    type: 'DISABLE_PANELS',
+    panelIds: panelIds
+  };
+};

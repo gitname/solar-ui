@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Checkbox, Icon, Table} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './PanelStatusTable.css';
 
 class PanelStatusTable extends Component {
@@ -13,84 +14,65 @@ class PanelStatusTable extends Component {
         initialSolarRadiance: 0.25,
         initialVoltage: 2.34,
         initialCurrent: 3.45,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 2,
         initialSolarRadiance: 0.35,
         initialVoltage: 3.45,
         initialCurrent: 4.56,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 3,
         initialSolarRadiance: 0.64,
         initialVoltage: 4.56,
         initialCurrent: 5.67,
-        inverterId: 1,
-        initiallyEnabled: false
+        inverterId: 1
       },
       {
         id: 4,
         initialSolarRadiance: 0.14,
         initialVoltage: 5.67,
         initialCurrent: 7.89,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 5,
         initialSolarRadiance: 0.85,
         initialVoltage: 8.90,
         initialCurrent: 9.10,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 6,
         initialSolarRadiance: 0.64,
         initialVoltage: 9.10,
         initialCurrent: 1.01,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 7,
         initialSolarRadiance: 0.13,
         initialVoltage: 1.01,
         initialCurrent: 1.11,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       },
       {
         id: 8,
         initialSolarRadiance: 0.12,
         initialVoltage: 1.11,
         initialCurrent: 1.21,
-        inverterId: 1,
-        initiallyEnabled: true
+        inverterId: 1
       }
     ];
 
-    // The ID of each panels.
+    // Populate an array of all panel IDs for future reference.
     this.panelIds = [];
-
-    // The ID of each initially-enabled panel.
-    const enabledPanelIds = [];
     for (let i = 0; i < this.panels.length; i++) {
-      this.panelIds.push(this.panels[i].id);
-
-      if (this.panels[i].initiallyEnabled === true) {
-        enabledPanelIds.push(this.panels[i].id);
-      }
+      const panelId = this.panels[i].id;
+      this.panelIds.push(panelId);
     }
-
-    // Store these values in the component state so React re-renders the component whenever these values change.
-    this.state = {
-      enabledPanelIds: enabledPanelIds
-    };
   }
 
   handleCheckboxChange(event, data) {
@@ -98,46 +80,18 @@ class PanelStatusTable extends Component {
       panelId = parseInt(data.name, 10);
 
     if (marked === true) {
-      this.enablePanel(panelId);
+      this.props.enablePanels([panelId]);
     } else {
-      this.disablePanel(panelId);
+      this.props.disablePanels([panelId]);
     }
   }
 
-  enablePanel(panelId) {
-    this.setState(function (prevState, props) {
-      // Copy the array, since the React docs recommend against mutating `prevState` directly.
-      const enabledPanelIds = prevState.enabledPanelIds.concat();
-
-      enabledPanelIds.push(panelId);
-      return {
-        enabledPanelIds: enabledPanelIds
-      }
-    });
-  }
-
-  disablePanel(panelId) {
-    this.setState(function (prevState, props) {
-      // Copy the array, since the React docs recommend against mutating `prevState` directly.
-      const enabledPanelIds = prevState.enabledPanelIds.concat();
-
-      enabledPanelIds.splice(enabledPanelIds.indexOf(panelId), 1);
-      return {
-        enabledPanelIds: enabledPanelIds
-      }
-    });
-  }
-
   enableAllPanels(event, data) {
-    this.setState({
-      enabledPanelIds: this.panelIds.concat()
-    });
+    this.props.enablePanels(this.panelIds);
   }
 
   disableAllPanels(event, data) {
-    this.setState({
-      enabledPanelIds: []
-    });
+    this.props.disablePanels(this.panelIds);
   }
 
   forkOnGitHub() {
@@ -148,7 +102,7 @@ class PanelStatusTable extends Component {
     let rows = [];
     for (let i = 0; i < this.panels.length; i++) {
       let panel = this.panels[i],
-        panelDisabled = (this.state.enabledPanelIds.indexOf(panel.id) === -1),
+        panelDisabled = (this.props.enabledPanelIds.indexOf(panel.id) === -1),
         voltage = panelDisabled ? 0 : panel.initialVoltage,
         current = panelDisabled ? 0 : panel.initialCurrent;
 
@@ -202,5 +156,11 @@ class PanelStatusTable extends Component {
     );
   }
 }
+
+PanelStatusTable.propTypes = {
+  enabledPanelIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  enablePanels: PropTypes.func.isRequired,
+  disablePanels: PropTypes.func.isRequired
+};
 
 export default PanelStatusTable;

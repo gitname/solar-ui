@@ -4,7 +4,7 @@ import EnergyStorageChart from '../EnergyStorageChart/EnergyStorageChart';
 import PowerOutputChart from '../PowerOutputChart/PowerOutputChart';
 import SolarRadianceChart from '../SolarRadianceChart/SolarRadianceChart';
 import LatestEventsFeed from "../LatestEventsFeed/LatestEventsFeed";
-import PanelStatusTable from "../PanelStatusTable/PanelStatusTable";
+import PanelStatusTableContainer from "../../containers/PanelStatusTableContainer";
 import './OverviewPageContent.css';
 
 class OverviewPageContent extends Component {
@@ -45,7 +45,7 @@ class OverviewPageContent extends Component {
             <Segment>
               <Header icon='options' content='Panel Status'/>
               <p>Status of each panel.</p>
-              <PanelStatusTable/>
+              <PanelStatusTableContainer/>
             </Segment>
           </Grid.Column>
         </Grid>
