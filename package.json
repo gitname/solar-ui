@@ -9,6 +9,8 @@
     "react": "^15.5.4",
     "react-chartjs-2": "^2.1.0",
     "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.5"
   },
