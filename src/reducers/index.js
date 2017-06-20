@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import sidebarVisibilityReducer from './sidebarVisibilityReducer';
-import panelEnablementReducer from './panelEnablementReducer';
+import panelsReducer from './panelsReducer';
 
 const combinedReducer = combineReducers({
   // Note: For each reducer function we want to combine, we specify a key and a value.
@@ -11,7 +11,7 @@ const combinedReducer = combineReducers({
   // Each value is a reference to a reducer function.
   //
   sidebarVisible: sidebarVisibilityReducer,
-  enabledPanelIds: panelEnablementReducer
+  panels: panelsReducer
 });
 
 export default combinedReducer;
