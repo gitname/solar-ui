@@ -60,8 +60,8 @@ class PanelStatusTable extends Component {
             <Table.HeaderCell>Enabled</Table.HeaderCell>
             <Table.HeaderCell>Panel</Table.HeaderCell>
             <Table.HeaderCell>Solar Radiance</Table.HeaderCell>
-            <Table.HeaderCell>Voltage Output</Table.HeaderCell>
-            <Table.HeaderCell>Current Output</Table.HeaderCell>
+            <Table.HeaderCell>Output Voltage</Table.HeaderCell>
+            <Table.HeaderCell>Output Current</Table.HeaderCell>
             <Table.HeaderCell>Inverter</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

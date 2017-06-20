@@ -7,57 +7,11 @@ class SolarRadianceChart extends Component {
   constructor(props) {
     super(props);
 
-    const solarRadiationValues = [
-      .25,
-      .35,
-      .64,
-      .135,
-      .85,
-      .64,
-      .125,
-      .115
-    ];
-
-    const highestSolarRadiationValue = Math.max.apply(null, solarRadiationValues);
-
     const xAxisLabel = 'Panel';
 
     const yAxisLabel = 'kW/m²';
 
     this.seriesLabel = 'Solar Radiance';
-
-    this.barBackgroundColors = [
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen
-    ];
-
-    this.barBorderColors = [
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen
-    ];
-
-    this.panelNumbers = [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8'
-    ];
 
     this.options = {
       maintainAspectRatio: false,
@@ -81,7 +35,7 @@ class SolarRadianceChart extends Component {
           },
           ticks: {
             beginAtZero: true,
-            suggestedMax: highestSolarRadiationValue
+            suggestedMax: 1
           }
         }]
       },
@@ -101,24 +55,38 @@ class SolarRadianceChart extends Component {
         }
       }
     };
+  }
 
-    // Store these values in the component state so React re-renders the component whenever these values change.
-    this.state = {
-      solarRadiationValues: solarRadiationValues
-    };
+  determineBarColor(panel) {
+    let color = palette.lightGray.setAlpha(0.1);
+    if (panel.enabled === true) {
+      color = palette.lightGreen;
+    }
+    return color;
   }
 
   render() {
+    const panels = this.props.panels,
+      panelIds = Object.keys(panels),
+      inputRadiances = [],
+      barColors = [];
+
+    panelIds.forEach(function (panelId) {
+      const panel = panels[panelId];
+      inputRadiances.push(panel.inputRadiance);
+      barColors.push(this.determineBarColor(panel));
+    }.bind(this));
+
     // Construct the `data` object in the format the `Bar` component expects.
     const data = {
-      labels: this.panelNumbers,
+      labels: panelIds,
       datasets: [{
         label: this.seriesLabel,
-        data: this.state.solarRadiationValues,
-        backgroundColor: this.barBackgroundColors,
-        borderColor: this.barBorderColors,
-        hoverBackgroundColor: this.barBackgroundColors,
-        hoverBorderColor: this.barBorderColors,
+        data: inputRadiances,
+        backgroundColor: barColors,
+        borderColor: barColors,
+        hoverBackgroundColor: barColors,
+        hoverBorderColor: barColors,
         borderWidth: 1
       }]
     };

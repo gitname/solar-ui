@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, Grid, Header, Segment} from 'semantic-ui-react';
 import EnergyStorageChart from '../EnergyStorageChart/EnergyStorageChart';
 import PowerOutputChart from '../PowerOutputChart/PowerOutputChart';
-import SolarRadianceChart from '../SolarRadianceChart/SolarRadianceChart';
+import SolarRadianceChartContainer from "../../containers/SolarRadianceChartContainer";
 import LatestEventsFeed from "../LatestEventsFeed/LatestEventsFeed";
 import PanelStatusTableContainer from "../../containers/PanelStatusTableContainer";
 import './OverviewPageContent.css';
@@ -17,7 +17,7 @@ class OverviewPageContent extends Component {
             <Segment>
               <Header icon='sun' content='Solar Radiance'/>
               <p>Solar radiance at each panel.</p>
-              <SolarRadianceChart/>
+              <SolarRadianceChartContainer/>
             </Segment>
           </Grid.Column>
           <Grid.Column computer={8} largeScreen={4} widescreen={4}>
