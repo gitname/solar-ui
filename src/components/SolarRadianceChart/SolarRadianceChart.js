@@ -57,7 +57,7 @@ class SolarRadianceChart extends Component {
     };
   }
 
-  determineBarColor(panel) {
+  static determineBarColor(panel) {
     let color = palette.lightGray.setAlpha(0.1);
     if (panel.enabled === true) {
       color = palette.lightGreen;
@@ -67,15 +67,15 @@ class SolarRadianceChart extends Component {
 
   render() {
     const panels = this.props.panels,
-      panelIds = Object.keys(panels),
+      panelIds = [],
       inputRadiances = [],
       barColors = [];
 
-    panelIds.forEach(function (panelId) {
-      const panel = panels[panelId];
+    panels.forEach(function (panel) {
+      panelIds.push(panel.id);
       inputRadiances.push(panel.inputRadiance);
-      barColors.push(this.determineBarColor(panel));
-    }.bind(this));
+      barColors.push(SolarRadianceChart.determineBarColor(panel));
+    });
 
     // Construct the `data` object in the format the `Bar` component expects.
     const data = {

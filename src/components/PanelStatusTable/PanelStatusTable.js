@@ -5,10 +5,10 @@ import './PanelStatusTable.css';
 
 class PanelStatusTable extends Component {
   handleCheckboxChange(event, data) {
-    const marked = data.checked,
+    const checkboxMarked = data.checked,
       panelId = data.name;
 
-    if (marked === true) {
+    if (checkboxMarked === true) {
       this.props.enablePanels([panelId]);
     } else {
       this.props.disablePanels([panelId]);
@@ -16,35 +16,36 @@ class PanelStatusTable extends Component {
   }
 
   enableAllPanels(event, data) {
-    const panelIds = Object.keys(this.props.panels);
-    this.props.enablePanels(panelIds);
+    this.props.enablePanels(PanelStatusTable.getPanelIds(this.props.panels));
   }
 
   disableAllPanels(event, data) {
-    const panelIds = Object.keys(this.props.panels);
-    this.props.disablePanels(panelIds);
+    this.props.disablePanels(PanelStatusTable.getPanelIds(this.props.panels));
   }
 
-  forkOnGitHub() {
+  static getPanelIds(panels) {
+    return panels.map(function (panel) {
+      return panel.id;
+    });
+  }
+
+  static forkOnGitHub() {
     window.location.assign('https://github.com/gitname/solar-ui');
   }
 
   render() {
     let rows,
-      panels = this.props.panels,
-      panelIds = Object.keys(panels);
+      panels = this.props.panels;
 
     // Generate one table row per panel.
-    rows = panelIds.map(function (panelId) {
-      const panel = panels[panelId];
-
+    rows = panels.map(function (panel) {
       return (
-        <Table.Row key={panelId}>
+        <Table.Row key={panel.id}>
           <Table.Cell collapsing>
-            <Checkbox slider checked={panel.enabled} name={'' + panelId}
+            <Checkbox slider checked={panel.enabled} name={'' + panel.id}
                       onChange={this.handleCheckboxChange.bind(this)}/>
           </Table.Cell>
-          <Table.Cell><a title={'View Panel ' + panelId + ' details'}>{panelId}</a></Table.Cell>
+          <Table.Cell><a title={'View Panel ' + panel.id + ' details'}>{panel.id}</a></Table.Cell>
           <Table.Cell disabled={!panel.enabled}>{panel.inputRadiance.toFixed(2)} kW/m²</Table.Cell>
           <Table.Cell disabled={!panel.enabled}>{panel.outputVoltage.toFixed(2)} V</Table.Cell>
           <Table.Cell disabled={!panel.enabled}>{panel.outputCurrent.toFixed(2)} A</Table.Cell>
@@ -90,7 +91,7 @@ class PanelStatusTable extends Component {
 }
 
 PanelStatusTable.propTypes = {
-  panels: PropTypes.objectOf(PropTypes.shape({
+  panels: PropTypes.arrayOf(PropTypes.shape({
     enabled: PropTypes.bool,
     inputRadiance: PropTypes.number,
     outputVoltage: PropTypes.number,
