@@ -42,21 +42,21 @@ class EnergyStorageChart extends Component {
     this.vacantBarLabel = 'Free Space';
 
     this.occupiedBarBackgroundColors = [
-      palette.lightGreen,
-      palette.lightGreen,
-      palette.lightGreen
+      palette.lightGreen.toString(),
+      palette.lightGreen.toString(),
+      palette.lightGreen.toString()
     ];
 
     this.vacantBarBackgroundColors = [
-      palette.lightGray.setAlpha(0.1),
-      palette.lightGray.setAlpha(0.1),
-      palette.lightGray.setAlpha(0.1)
+      palette.lightGray.setAlpha(0.1).toString(),
+      palette.lightGray.setAlpha(0.1).toString(),
+      palette.lightGray.setAlpha(0.1).toString()
     ];
 
     this.vacantBarBorderColors = [
-      palette.lightGray.setAlpha(0.5),
-      palette.lightGray.setAlpha(0.5),
-      palette.lightGray.setAlpha(0.5)
+      palette.lightGray.setAlpha(0).toString(),
+      palette.lightGray.setAlpha(0).toString(),
+      palette.lightGray.setAlpha(0).toString()
     ];
 
     this.barStackLabels = [
@@ -69,6 +69,9 @@ class EnergyStorageChart extends Component {
       maintainAspectRatio: false,
       legend: {
         display: false
+      },
+      hover: {
+        animationDuration: 0,
       },
       scales: {
         xAxes: [{
@@ -96,12 +99,12 @@ class EnergyStorageChart extends Component {
       tooltips: {
         callbacks: {
           // Display the bar label as the tooltip title.
-          title: function (tooltipItem, data) {
+          title: (tooltipItem, data) => {
             const datasetIndex = tooltipItem[0].datasetIndex;
             return data.datasets[datasetIndex].label;
           },
           // Display a truncated version of the bar value as the tooltip value.
-          label: function (tooltipItem, data) {
+          label: (tooltipItem, data) => {
             const barValue = tooltipItem.yLabel;
             return barValue.toFixed(1) + ' kW⋅h';
           }

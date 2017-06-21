@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Bar} from 'react-chartjs-2';
 import palette from '../../lib/color';
 import './SolarRadianceChart.css';
@@ -39,15 +40,18 @@ class SolarRadianceChart extends Component {
           }
         }]
       },
+      hover: {
+        animationDuration: 0,
+      },
       tooltips: {
         callbacks: {
           // Display the series label as the tooltip title.
-          title: function (tooltipItem, data) {
+          title: (tooltipItem, data) => {
             const datasetIndex = tooltipItem[0].datasetIndex;
             return data.datasets[datasetIndex].label;
           },
           // Display a truncated version of the bar value as the tooltip value.
-          label: function (tooltipItem, data) {
+          label: (tooltipItem, data) => {
             const barValue = tooltipItem.yLabel,
               decimalPlaces = 2;
             return barValue.toFixed(decimalPlaces) + ' kW/m²';
@@ -57,24 +61,16 @@ class SolarRadianceChart extends Component {
     };
   }
 
-  static determineBarColor(panel) {
-    let color = palette.lightGray.setAlpha(0.1);
-    if (panel.enabled === true) {
-      color = palette.lightGreen;
-    }
-    return color;
-  }
-
   render() {
     const panels = this.props.panels,
-      panelIds = [],
       inputRadiances = [],
+      panelIds = [],
       barColors = [];
 
-    panels.forEach(function (panel) {
-      panelIds.push(panel.id);
+    panels.forEach((panel) => {
       inputRadiances.push(panel.inputRadiance);
-      barColors.push(SolarRadianceChart.determineBarColor(panel));
+      panelIds.push(panel.id);
+      barColors.push((panel.enabled ? palette.lightGreen.toString() : palette.lightGray.setAlpha(0.1).toString()));
     });
 
     // Construct the `data` object in the format the `Bar` component expects.
@@ -98,5 +94,9 @@ class SolarRadianceChart extends Component {
     );
   }
 }
+
+SolarRadianceChart.propTypes = {
+  panels: PropTypes.array.isRequired,
+};
 
 export default SolarRadianceChart;

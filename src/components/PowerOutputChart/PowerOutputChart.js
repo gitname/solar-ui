@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Line} from 'react-chartjs-2';
 import palette from '../../lib/color';
 import './PowerOutputChart.css';
@@ -7,23 +8,19 @@ class PowerOutputChart extends Component {
   constructor(props) {
     super(props);
 
-    const powerValues = [5.3, 6.2, 5.3, 6.2, 5.3];
-
-    const maximumPowerValue = 10;
-
-    const xAxisLabel = 'Time (seconds)';
+    const xAxisLabel = 'Time';
 
     const yAxisLabel = 'kW';
 
-    this.initialPointRadius = 0;
+    this.initialPointRadius = 2;
 
     this.powerLineLabel = 'Power Output';
 
-    this.powerLineBackgroundColor = palette.lightGreen.setAlpha(0);
+    this.powerLineBackgroundColor = palette.lightGreen.setAlpha(0.1).toString();
 
-    this.powerLineBorderColor = palette.lightGreen;
+    this.powerLineBorderColor = palette.lightGreen.toString();
 
-    this.timeLabels = ['-4', '-3', '-2', '-1', 'Now'];
+    this.timeLabels = ['-5s', '', '', '', '', 'Now'];
 
     this.options = {
       maintainAspectRatio: false,
@@ -47,43 +44,72 @@ class PowerOutputChart extends Component {
           },
           ticks: {
             beginAtZero: true,
-            suggestedMax: maximumPowerValue
+            suggestedMax: 10
           }
         }]
+      },
+      animation: {
+        duration: 0
+      },
+      hover: {
+        animationDuration: 0,
       },
       tooltips: {
         callbacks: {
           // Display the line label as the tooltip title.
-          title: function (tooltipItem, data) {
+          title: (tooltipItem, data) => {
             const datasetIndex = tooltipItem[0].datasetIndex;
             return data.datasets[datasetIndex].label;
           },
           // Display a truncated version of the power value as the tooltip text.
-          label: function (tooltipItem, data) {
+          label: (tooltipItem, data) => {
             const powerValue = tooltipItem.yLabel;
-            return powerValue.toFixed(1) + ' kW';
+            return powerValue.toFixed(2) + ' kW';
           }
         }
       }
     };
 
+    const initialTotalOutputPowerHistory = [null, null, null, null, null, null].map(() => {
+      return PowerOutputChart.getTotalOutputPower(this.props.panels);
+    });
+
     // Store these values in the component state so React re-renders the component whenever these values change.
     this.state = {
-      powerValues: powerValues,
+      totalOutputPowerHistory: initialTotalOutputPowerHistory,
       pointRadius: this.initialPointRadius
     };
+
+    setInterval(this.updateTotalOutputPowerHistory.bind(this), 1000);
   }
 
-  emphasizePoints() {
-    this.setState({
-      pointRadius: this.initialPointRadius + 2
+  /**
+   * Update the `totalOutputPowerHistory` property of the state, so it contains the newest output power value,
+   * and no longer contains the oldest output power value.
+   */
+  updateTotalOutputPowerHistory() {
+    this.setState((prevState, props) => {
+      const totalOutputPowerHistory = prevState.totalOutputPowerHistory.concat();
+      const totalOutputPower = PowerOutputChart.getTotalOutputPower(props.panels);
+      totalOutputPowerHistory.shift();
+      totalOutputPowerHistory.push(totalOutputPower);
+      return {
+        totalOutputPowerHistory: totalOutputPowerHistory
+      };
     });
   }
 
-  deemphasizePoints() {
-    this.setState({
-      pointRadius: this.initialPointRadius
-    });
+  /**
+   * Returns the total output power of all panels, combined.
+   *
+   * @param panels - An array containing `panel` objects.
+   * @return {*} - A number representing the total output power.
+   */
+  static getTotalOutputPower(panels) {
+    return panels.reduce((accumulator, panel) => {
+      const outputPower = panel.outputVoltage * panel.outputCurrent;
+      return accumulator + outputPower;
+    }, 0);
   }
 
   render() {
@@ -92,7 +118,7 @@ class PowerOutputChart extends Component {
       labels: this.timeLabels,
       datasets: [{
         label: this.powerLineLabel,
-        data: this.state.powerValues,
+        data: this.state.totalOutputPowerHistory,
         backgroundColor: this.powerLineBackgroundColor,
         borderColor: this.powerLineBorderColor,
         borderWidth: 1,
@@ -101,13 +127,15 @@ class PowerOutputChart extends Component {
     };
 
     return (
-      <div className='power-output-chart--chart-wrapper'
-           onMouseEnter={this.emphasizePoints.bind(this)}
-           onMouseLeave={this.deemphasizePoints.bind(this)}>
+      <div className='power-output-chart--chart-wrapper'>
         <Line data={data} options={this.options}/>
       </div>
     );
   }
 }
+
+PowerOutputChart.propTypes = {
+  panels: PropTypes.array.isRequired,
+};
 
 export default PowerOutputChart;

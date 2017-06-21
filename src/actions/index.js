@@ -9,13 +9,26 @@ export const toggleSidebarVisibility = function () {
 export const enablePanels = function (panelIds) {
   return {
     type: 'ENABLE_PANELS',
-    panelIds: panelIds
+    payload: {
+      panelIds: panelIds
+    }
   };
 };
 
 export const disablePanels = function (panelIds) {
   return {
     type: 'DISABLE_PANELS',
-    panelIds: panelIds
+    payload: {
+      panelIds: panelIds
+    }
+  };
+};
+
+export const updateInputRadiances = function (newInputRadiances) {
+  return {
+    type: 'UPDATE_INPUT_RADIANCES',
+    payload: {
+      newInputRadiances: newInputRadiances
+    }
   };
 };

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import combinedReducer from './reducers';
-import App from './components/App/App';
+import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -27,7 +27,7 @@ let appStore = createStore(
 
 ReactDOM.render(
   <Provider store={appStore}>
-    <App />
+    <AppContainer/>
   </Provider>,
   document.getElementById('root')
 );

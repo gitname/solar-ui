@@ -24,7 +24,7 @@ const Color = function (rgbaValues) {
  * @param formatDescriptor
  * @returns {string}
  */
-Color.prototype.toString = function (formatDescriptor) {
+Color.prototype.toString = function (formatDescriptor = 'rgba') {
   let string = '';
 
   switch (formatDescriptor) {

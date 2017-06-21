@@ -1,160 +1,113 @@
-/**
- * Clones an array of `panels`.
- *
- * @param panels - The array you want to clone.
- * @returns {Array} - The new array.
- */
-const clonePanels = function (panels) {
-  const panelsClone = [];
-  panels.forEach(function (panel) {
-    // Doing a shallow copy is sufficient, since a `panel` has a depth of only 1.
-    const panelClone = Object.assign({}, panel);
-    panelsClone.push(panelClone);
-  });
-  return panelsClone;
-};
+import {
+  clonePanels,
+  enablePanels,
+  disablePanels,
+  updateInputRadiances
+} from './lib/panelsHelpers';
 
-/**
- * Enables one or more `panel` objects.
- *
- * @param targetPanelIds - An array containing the ID of each `panel` object you want to enable.
- * @param panels - An array containing the `panel` objects you want to enable.
- */
-const enablePanels = function (targetPanelIds, panels) {
-  panels.forEach(function (panel) {
-    if (targetPanelIds.indexOf(panel.id) !== -1) {
-      panel.enabled = true;
+export const _initialPanels = (function () {
+
+  const panels = [
+    {
+      id: '1',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '2',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '3',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '4',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '5',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '6',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '7',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
+    },
+    {
+      id: '8',
+      enabled: false,
+      inputRadiance: null,
+      outputVoltage: null,
+      outputCurrent: null
     }
-  });
-};
+  ];
+
+  let newInputRadiancesByPanelId = [];
+
+  newInputRadiancesByPanelId['1'] = 0.25;
+  newInputRadiancesByPanelId['2'] = 0.35;
+  newInputRadiancesByPanelId['3'] = 0.64;
+  newInputRadiancesByPanelId['4'] = 0.14;
+  newInputRadiancesByPanelId['5'] = 0.85;
+  newInputRadiancesByPanelId['6'] = 0.64;
+  newInputRadiancesByPanelId['7'] = 0.13;
+  newInputRadiancesByPanelId['8'] = 0.12;
+
+  updateInputRadiances(panels, newInputRadiancesByPanelId);
+
+  enablePanels(panels, ['1', '2', '4', '5', '6', '7', '8']); // Skip panel '3', to keep things interesting.
+
+  return panels;
+})();
 
 /**
- * Disables one or more `panel` objects.
- *
- * @param targetPanelIds - An array containing the ID of each `panel` object you want to disable.
- * @param panels - An array containing the `panel` objects you want to disable.
- */
-const disablePanels = function (targetPanelIds, panels) {
-  panels.forEach(function (panel) {
-    if (targetPanelIds.indexOf(panel.id) !== -1) {
-      panel.enabled = false;
-    }
-  });
-};
-
-/**
- * Updates the 'output...' properties so they're mathematically consistent with the 'input...' and 'enabled' properties,
- * of each `panel` object in the array passed in.
- *
- * Note: In real life, the 'input', 'enabled', and 'output' values might originate at some hardware sensors, be
- * processed by a server, and be provided to the web client via a REST API. However, since this is only a simulation of
- * a solar panel system, I'm calculating the 'output' values here, in the web client itself.
- *
- * @param panels - An array containing the `panel` objects you want to update.
- */
-const reconcileOutputProperties = function (panels) {
-  panels.forEach(function (panel) {
-    const outputVoltage = 12,
-      outputCurrentToInputRadianceRatio = 0.1348,
-      outputCurrent = panel.inputRadiance * outputCurrentToInputRadianceRatio;
-
-    panel.outputVoltage = (panel.enabled ? outputVoltage : 0);
-    panel.outputCurrent = (panel.enabled ? outputCurrent : 0);
-  });
-};
-
-/**
- * Updates the `panels` portion of the Redux state according to the type of the action passed in.
+ * Updates the `panels` portion of the Redux state according to the action passed in.
  *
  * @param panels
  * @param action
  * @returns {*}
  */
-const panelsReducer = function (panels, action) {
+const panelsReducer = function (panels = _initialPanels, action = {}) {
   let nextPanels;
-
-  // Initialize the `panels` array if it is `undefined`.
-  if (panels === undefined) {
-    panels = [
-      {
-        id: '1',
-        enabled: true,
-        inputRadiance: 0.25,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '2',
-        enabled: true,
-        inputRadiance: 0.35,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '3',
-        enabled: false,
-        inputRadiance: 0.64,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '4',
-        enabled: true,
-        inputRadiance: 0.14,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '5',
-        enabled: true,
-        inputRadiance: 0.85,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '6',
-        enabled: true,
-        inputRadiance: 0.64,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '7',
-        enabled: true,
-        inputRadiance: 0.13,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      },
-      {
-        id: '8',
-        enabled: true,
-        inputRadiance: 0.12,
-        outputVoltage: null,
-        outputCurrent: null,
-        inverterId: '1'
-      }
-    ];
-    reconcileOutputProperties(panels);
-  }
 
   switch (action.type) {
     case 'ENABLE_PANELS':
       nextPanels = clonePanels(panels);
-      enablePanels(action.panelIds, nextPanels);
-      reconcileOutputProperties(nextPanels);
+      enablePanels(nextPanels, action.payload.panelIds);
       break;
 
     case 'DISABLE_PANELS':
       nextPanels = clonePanels(panels);
-      disablePanels(action.panelIds, nextPanels);
-      reconcileOutputProperties(nextPanels);
+      disablePanels(nextPanels, action.payload.panelIds);
+      break;
+
+    case 'UPDATE_INPUT_RADIANCES':
+      nextPanels = clonePanels(panels);
+      updateInputRadiances(nextPanels, action.payload.newInputRadiances);
       break;
 
     default:
