@@ -2,6 +2,10 @@
     overflow-x: auto;
 }
 
+.panel-status-table--data-cell {
+    white-space: nowrap;
+}
+
 @media (max-width: 767px) {
     .panel-status-table--table .buttons {
         margin: 0 0.25rem 1rem 0 !important
