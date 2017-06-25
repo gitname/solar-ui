@@ -53,12 +53,6 @@ class EnergyStorageChart extends Component {
       palette.lightGray.setAlpha(0.1).toString()
     ];
 
-    this.vacantBarBorderColors = [
-      palette.lightGray.setAlpha(0).toString(),
-      palette.lightGray.setAlpha(0).toString(),
-      palette.lightGray.setAlpha(0).toString()
-    ];
-
     this.barStackLabels = [
       '1',
       '2',
@@ -127,13 +121,13 @@ class EnergyStorageChart extends Component {
         label: this.occupiedBarLabel,
         data: this.state.occupiedBarValues,
         backgroundColor: this.occupiedBarBackgroundColors,
-        borderColor: this.vacantBarBorderColors,
+        borderColor: this.occupiedBarBackgroundColors,
         borderWidth: 1
       }, {
         label: this.vacantBarLabel,
         data: this.state.vacantBarValues,
         backgroundColor: this.vacantBarBackgroundColors,
-        borderColor: this.vacantBarBorderColors,
+        borderColor: this.vacantBarBackgroundColors,
         borderWidth: 1
       }]
     };
