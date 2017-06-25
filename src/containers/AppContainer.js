@@ -1,14 +1,16 @@
 import {connect} from 'react-redux'
-import {updateInputRadiances} from '../actions';
+import {updateInputRadiances, updateStoredEnergies} from '../actions';
 import App from '../components/App/App';
 
 const mapStateToProps = function (state) {
   return {
+    batteries: state.batteries,
     panels: state.panels
   };
 };
 
 const mapDispatchToProps = {
+  updateStoredEnergies: updateStoredEnergies,
   updateInputRadiances: updateInputRadiances
 };
 

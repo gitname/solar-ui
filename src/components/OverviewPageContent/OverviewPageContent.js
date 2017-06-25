@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Grid, Header, Segment} from 'semantic-ui-react';
-import EnergyStorageChart from '../EnergyStorageChart/EnergyStorageChart';
-import PowerOutputChartContainer from "../../containers/PowerOutputChartContainer";
 import SolarRadianceChartContainer from "../../containers/SolarRadianceChartContainer";
+import PowerOutputChartContainer from "../../containers/PowerOutputChartContainer";
+import EnergyStorageChartContainer from "../../containers/EnergyStorageChartContainer";
 import LatestEventsFeed from "../LatestEventsFeed/LatestEventsFeed";
 import PanelStatusTableContainer from "../../containers/PanelStatusTableContainer";
 import './OverviewPageContent.css';
@@ -31,7 +31,7 @@ class OverviewPageContent extends Component {
             <Segment>
               <Header icon='high battery' content='Energy Storage'/>
               <p>Energy stored in each battery.</p>
-              <EnergyStorageChart/>
+              <EnergyStorageChartContainer/>
             </Segment>
           </Grid.Column>
           <Grid.Column computer={8} largeScreen={4} widescreen={4}>

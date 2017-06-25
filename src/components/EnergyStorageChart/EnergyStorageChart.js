@@ -114,18 +114,32 @@ class EnergyStorageChart extends Component {
   }
 
   render() {
+    const batteries = this.props.batteries,
+      batteryIds = [],
+      storedEnergiesKWh = [],
+      vacanciesKWh = [];
+
+    batteries.forEach((battery) => {
+      const storedEnergyKWh = battery.storedEnergyKWh,
+        vacancyKWh = battery.energyCapacityKWh - storedEnergyKWh;
+
+      batteryIds.push(battery.id);
+      storedEnergiesKWh.push(storedEnergyKWh);
+      vacanciesKWh.push(vacancyKWh)
+    });
+
     // Construct the `data` object in the format the `Bar` component expects.
     const data = {
-      labels: this.barStackLabels,
+      labels: batteryIds,
       datasets: [{
         label: this.occupiedBarLabel,
-        data: this.state.occupiedBarValues,
+        data: storedEnergiesKWh,
         backgroundColor: this.occupiedBarBackgroundColors,
         borderColor: this.occupiedBarBackgroundColors,
         borderWidth: 1
       }, {
         label: this.vacantBarLabel,
-        data: this.state.vacantBarValues,
+        data: vacanciesKWh,
         backgroundColor: this.vacantBarBackgroundColors,
         borderColor: this.vacantBarBackgroundColors,
         borderWidth: 1

@@ -63,8 +63,8 @@ class SolarRadianceChart extends Component {
 
   render() {
     const panels = this.props.panels,
-      inputRadiances = [],
       panelIds = [],
+      inputRadiances = [],
       barColors = [];
 
     panels.forEach((panel) => {

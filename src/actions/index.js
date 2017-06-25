@@ -1,9 +1,9 @@
+// Each of these functions returns a Redux action.
+
 export const toggleSidebarVisibility = function () {
-  // Note: I created this variable in an attempt to clarify for the reader, what--in terms of Redux concepts--this function returns.
-  let action = {
+  return {
     type: 'TOGGLE_SIDEBAR_VISIBILITY'
   };
-  return action;
 };
 
 export const enablePanels = function (panelIds) {
@@ -29,6 +29,15 @@ export const updateInputRadiances = function (newInputRadiances) {
     type: 'UPDATE_INPUT_RADIANCES',
     payload: {
       newInputRadiances: newInputRadiances
+    }
+  };
+};
+
+export const updateStoredEnergies = function (newStoredEnergiesByBatteryId) {
+  return {
+    type: 'UPDATE_STORED_ENERGIES',
+    payload: {
+      newStoredEnergiesByBatteryId: newStoredEnergiesByBatteryId
     }
   };
 };

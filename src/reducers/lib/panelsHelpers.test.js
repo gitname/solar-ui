@@ -13,8 +13,8 @@ describe('clonePanels()', function () {
 
   beforeEach(() => {
     array = [
-      {a: 1},
-      {b: 2}
+      {id: '1', enabled: true, inputRadianceKWM2: 1, outputVoltageV: null, outputCurrentA: null},
+      {id: '2', enabled: false, inputRadianceKWM2: 2, outputVoltageV: null, outputCurrentA: null}
     ];
     newArray = clonePanels(array);
   });
@@ -38,10 +38,10 @@ describe('_enableDisablePanels()', function () {
 
   beforeEach(() => {
     array = [
-      {id: '1', enabled: false},
-      {id: '2', enabled: false},
-      {id: '3', enabled: true},
-      {id: '4', enabled: true},
+      {id: '1', enabled: false, inputRadianceKWM2: 1, outputVoltageV: null, outputCurrentA: null},
+      {id: '2', enabled: false, inputRadianceKWM2: 2, outputVoltageV: null, outputCurrentA: null},
+      {id: '3', enabled: true, inputRadianceKWM2: 3, outputVoltageV: null, outputCurrentA: null},
+      {id: '4', enabled: true, inputRadianceKWM2: 4, outputVoltageV: null, outputCurrentA: null}
     ];
   });
 

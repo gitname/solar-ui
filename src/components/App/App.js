@@ -12,16 +12,15 @@ class App extends Component {
     super(props);
 
     setInterval(this.updateInputRadiances.bind(this), 4000);
+    setInterval(this.updateStoredEnergies.bind(this), 4000);
   }
 
   /**
-   * Begins the process of updating the input radiance value of each panel in the Redux store, with a value that is near
-   * the current value.
+   * Begins the process of updating the input radiance value of each panel in the Redux store, with a random value
+   * near the current value.
    *
-   * Note: If we were using a real-life solar panel system, we would not need to do this, as the input radiance of each
-   * panel would be naturally updated as their sunlight exposure changed over time. In that case, the client might
-   * obtain the new values by reading them from an API, which read them from sensors. However, since this is a
-   * simulation in which all logic is contained within the client, we update the properties ourselves (i.e. here) instead.
+   * Note: If we were using a real-life solar panel system, we might read these values from a web server (e.g. API).
+   * However, since we are not using a real-life solar panel system, we are generating these values ourselves here.
    */
   updateInputRadiances() {
     const newInputRadiancesByPanelId = [];
@@ -29,6 +28,21 @@ class App extends Component {
       newInputRadiancesByPanelId[panel.id] = getNearbyRandomNumber(0, 1, panel.inputRadianceKWM2, 0.05);
     });
     this.props.updateInputRadiances(newInputRadiancesByPanelId);
+  }
+
+  /**
+   * Begins the process of updating the energy stored value of each battery in the Redux store, with a random value
+   * near the current value.
+   *
+   * Note: If we were using a real-life solar panel system, we might read these values from a web server (e.g. API).
+   * However, since we are not using a real-life solar panel system, we are generating these values ourselves here.
+   */
+  updateStoredEnergies() {
+    const newStoredEnergiesByBatteryId = [];
+    this.props.batteries.forEach((battery) => {
+      newStoredEnergiesByBatteryId[battery.id] = getNearbyRandomNumber(0, battery.energyCapacityKWh, battery.storedEnergyKWh, 0.25);
+    });
+    this.props.updateStoredEnergies(newStoredEnergiesByBatteryId);
   }
 
   render() {
