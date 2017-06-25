@@ -7,31 +7,15 @@ class EnergyStorageChart extends Component {
   constructor(props) {
     super(props);
 
-    // Define the initial values of the bars.
+    // Introduction:
     //
     // The "occupied" bar refers to the bottom (green) bar, which represents the amount of energy stored in the battery.
-    // The "vacant" bar refers to the top (gray) bar, which represents the amount of additional energy that can fit in the battery.
     //
-    // The bar "stack" is not, itself, a distinct bar; rather, it refers to the "vacant" bar stacked on top of the "occupied" bar.
-    // The bar "stack" value = (the "vacant" bar value) + (the "occupied" bar value).
-
-    const barStackValues = [
-      13.5,
-      13.5,
-      6.4
-    ];
-
-    const highestBarStackValue = Math.max.apply(null, barStackValues);
-
-    const occupiedBarInitialValues = [
-      8.1,
-      11.61,
-      1.13
-    ];
-
-    const vacantBarInitialValues = occupiedBarInitialValues.map(function (value, index) {
-      return barStackValues[index] - value;
-    });
+    // The "vacant" bar refers to the top (gray) bar, which represents the amount of additional energy that can fit in
+    // the battery.
+    //
+    // In the chart, the stack (i.e. the "vacant" bar on top of the "occupied" bar) will represent an "energy container"
+    // of which some portion is occupied (i.e. filled) and some portion is vacant (i.e. empty).
 
     const xAxisLabel = 'Battery';
 
@@ -51,12 +35,6 @@ class EnergyStorageChart extends Component {
       palette.lightGray.setAlpha(0.1).toString(),
       palette.lightGray.setAlpha(0.1).toString(),
       palette.lightGray.setAlpha(0.1).toString()
-    ];
-
-    this.barStackLabels = [
-      '1',
-      '2',
-      '3'
     ];
 
     this.options = {
@@ -86,7 +64,7 @@ class EnergyStorageChart extends Component {
           stacked: true,
           ticks: {
             beginAtZero: true,
-            suggestedMax: highestBarStackValue
+            suggestedMax: 15
           }
         }]
       },
@@ -104,12 +82,6 @@ class EnergyStorageChart extends Component {
           }
         }
       }
-    };
-
-    // Store these values in the component state so React re-renders the component whenever these values change.
-    this.state = {
-      occupiedBarValues: occupiedBarInitialValues,
-      vacantBarValues: vacantBarInitialValues
     };
   }
 
