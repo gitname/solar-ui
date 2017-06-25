@@ -11,58 +11,58 @@ export const _initialPanels = (function () {
     {
       id: '1',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '2',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '3',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '4',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '5',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '6',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '7',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     },
     {
       id: '8',
       enabled: false,
-      inputRadiance: null,
-      outputVoltage: null,
-      outputCurrent: null
+      inputRadianceKWM2: null,
+      outputVoltageV: null,
+      outputCurrentA: null
     }
   ];
 

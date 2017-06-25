@@ -2,8 +2,8 @@ import {
   clonePanels,
   _enableDisablePanels,
   _reconcilePanelProperties,
-  _outputVoltageV,
-  _outputCurrentA_to_inputRadianceWM2_ratio,
+  _outputVoltageVSetting,
+  _outputCurrentA_to_inputRadianceKWM2_ratio,
   updateInputRadiances
 } from './panelsHelpers';
 
@@ -66,17 +66,17 @@ describe('_enableDisablePanels()', function () {
 describe('_reconcilePanelProperties()', function () {
 
   test('calculates the output voltage and output current of an enabled panel', () => {
-    let panel = {id: '1', enabled: true, inputRadiance: 10, outputVoltage: null, outputCurrent: null};
+    let panel = {id: '1', enabled: true, inputRadianceKWM2: 10, outputVoltageV: null, outputCurrentA: null};
     _reconcilePanelProperties(panel);
-    expect(panel.outputVoltage).toBe(_outputVoltageV);
-    expect(panel.outputCurrent).toBe(10 * _outputCurrentA_to_inputRadianceWM2_ratio);
+    expect(panel.outputVoltageV).toBe(_outputVoltageVSetting);
+    expect(panel.outputCurrentA).toBe(10 * _outputCurrentA_to_inputRadianceKWM2_ratio);
   });
 
   test('sets the output voltage and output current of a disabled panel to 0', () => {
-    let panel = {id: '1', enabled: false, inputRadiance: 10, outputVoltage: null, outputCurrent: null};
+    let panel = {id: '1', enabled: false, inputRadianceKWM2: 10, outputVoltageV: null, outputCurrentA: null};
     _reconcilePanelProperties(panel);
-    expect(panel.outputVoltage).toBe(0);
-    expect(panel.outputCurrent).toBe(0);
+    expect(panel.outputVoltageV).toBe(0);
+    expect(panel.outputCurrentA).toBe(0);
   });
 
 });
@@ -87,9 +87,9 @@ describe('updateInputRadiances()', function () {
 
   beforeEach(() => {
     array = [
-      {id: '1', enabled: true, inputRadiance: 2, outputVoltage: null, outputCurrent: null},
-      {id: '2', enabled: false, inputRadiance: 4, outputVoltage: null, outputCurrent: null},
-      {id: '3', enabled: false, inputRadiance: 6, outputVoltage: null, outputCurrent: null}
+      {id: '1', enabled: true, inputRadianceKWM2: 2, outputVoltageV: null, outputCurrentA: null},
+      {id: '2', enabled: false, inputRadianceKWM2: 4, outputVoltageV: null, outputCurrentA: null},
+      {id: '3', enabled: false, inputRadianceKWM2: 6, outputVoltageV: null, outputCurrentA: null}
     ];
     newInputRadiancesByPanelId['1'] = 111;
     newInputRadiancesByPanelId['2'] = 222;
@@ -98,9 +98,9 @@ describe('updateInputRadiances()', function () {
   });
 
   test('updates input radiances of specified panels to the values passed in', () => {
-    expect(array[0].inputRadiance).toBe(111);
-    expect(array[1].inputRadiance).toBe(222);
-    expect(array[2].inputRadiance).toBe(6);
+    expect(array[0].inputRadianceKWM2).toBe(111);
+    expect(array[1].inputRadianceKWM2).toBe(222);
+    expect(array[2].inputRadianceKWM2).toBe(6);
   });
 
 });

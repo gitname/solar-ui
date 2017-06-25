@@ -26,7 +26,7 @@ class App extends Component {
   updateInputRadiances() {
     const newInputRadiancesByPanelId = [];
     this.props.panels.forEach((panel) => {
-      newInputRadiancesByPanelId[panel.id] = getNearbyRandomNumber(0, 1, panel.inputRadiance, 0.02);
+      newInputRadiancesByPanelId[panel.id] = getNearbyRandomNumber(0, 1, panel.inputRadianceKWM2, 0.05);
     });
     this.props.updateInputRadiances(newInputRadiancesByPanelId);
   }

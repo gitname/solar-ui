@@ -1,5 +1,5 @@
-export const _outputVoltageV = 12;
-export const _outputCurrentA_to_inputRadianceWM2_ratio = 0.135;
+export const _outputVoltageVSetting = 24;
+export const _outputCurrentA_to_inputRadianceKWM2_ratio = 4.5; // outputCurrent [A] ÷ inputRadiance [kW/m²]
 
 /**
  * Clones an array of `panel` objects.
@@ -58,22 +58,22 @@ export const disablePanels = function (panels = [], panelIds = []) {
  * @param panel - The `panel` object.
  */
 export const _reconcilePanelProperties = function (panel) {
-  const outputCurrentA = panel.inputRadiance * _outputCurrentA_to_inputRadianceWM2_ratio;
-  panel.outputVoltage = (panel.enabled ? _outputVoltageV : 0);
-  panel.outputCurrent = (panel.enabled ? outputCurrentA : 0);
+  const outputCurrentA = panel.inputRadianceKWM2 * _outputCurrentA_to_inputRadianceKWM2_ratio;
+  panel.outputVoltageV = (panel.enabled ? _outputVoltageVSetting : 0);
+  panel.outputCurrentA = (panel.enabled ? outputCurrentA : 0);
 };
 
 /**
- * Updates the `inputRadiance` property value of each `panel` object for which a new value is provided.
+ * Updates the `inputRadianceKWM2` property value of each `panel` object for which a new value is provided.
  *
  * @param panels - Array containing the `panel` objects.
- * @param newInputRadiancesByPanelId - Array containing `inputRadiance` values, indexed by panel ID.
+ * @param newInputRadiancesByPanelId - Array containing `inputRadianceKWM2` values, indexed by panel ID.
  */
 export const updateInputRadiances = function (panels, newInputRadiancesByPanelId) {
   const panelIds = Object.keys(newInputRadiancesByPanelId);
   panels.forEach((panel) => {
     if (panelIds.indexOf(panel.id) !== -1) {
-      panel.inputRadiance = newInputRadiancesByPanelId[panel.id];
+      panel.inputRadianceKWM2 = newInputRadiancesByPanelId[panel.id];
       _reconcilePanelProperties(panel);
     }
   });

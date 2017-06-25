@@ -68,7 +68,7 @@ class SolarRadianceChart extends Component {
       barColors = [];
 
     panels.forEach((panel) => {
-      inputRadiances.push(panel.inputRadiance);
+      inputRadiances.push(panel.inputRadianceKWM2);
       panelIds.push(panel.id);
       barColors.push((panel.enabled ? palette.lightGreen.toString() : palette.lightGray.setAlpha(0.1).toString()));
     });

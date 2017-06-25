@@ -42,9 +42,9 @@ class PanelStatusTable extends Component {
                       onChange={this.handleCheckboxChange.bind(this)}/>
           </Table.Cell>
           <Table.Cell><a title={'View Panel ' + panel.id + ' details'}>{panel.id}</a></Table.Cell>
-          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.inputRadiance.toFixed(2)} kW/m²</Table.Cell>
-          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputVoltage.toFixed(2)} V</Table.Cell>
-          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputCurrent.toFixed(2)} A</Table.Cell>
+          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.inputRadianceKWM2.toFixed(2)} kW/m²</Table.Cell>
+          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputVoltageV.toFixed(2)} V</Table.Cell>
+          <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputCurrentA.toFixed(2)} A</Table.Cell>
         </Table.Row>
       );
     });

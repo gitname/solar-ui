@@ -44,7 +44,7 @@ class PowerOutputChart extends Component {
           },
           ticks: {
             beginAtZero: true,
-            suggestedMax: 10
+            suggestedMax: 0.5
           }
         }]
       },
@@ -100,15 +100,16 @@ class PowerOutputChart extends Component {
   }
 
   /**
-   * Returns the total output power of all panels, combined.
+   * Returns the total output power [kW] of all panels, combined.
    *
    * @param panels - An array containing `panel` objects.
    * @return {*} - A number representing the total output power.
    */
   static getTotalOutputPower(panels) {
     return panels.reduce((accumulator, panel) => {
-      const outputPower = panel.outputVoltage * panel.outputCurrent;
-      return accumulator + outputPower;
+      const outputPowerW = panel.outputVoltageV * panel.outputCurrentA;
+      const outputPowerKW = outputPowerW / 1000;
+      return accumulator + outputPowerKW;
     }, 0);
   }
 
