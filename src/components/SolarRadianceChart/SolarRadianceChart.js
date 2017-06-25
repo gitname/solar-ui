@@ -81,8 +81,6 @@ class SolarRadianceChart extends Component {
         data: inputRadiances,
         backgroundColor: barColors,
         borderColor: barColors,
-        hoverBackgroundColor: barColors,
-        hoverBorderColor: barColors,
         borderWidth: 1
       }]
     };

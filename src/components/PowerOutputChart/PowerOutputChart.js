@@ -122,7 +122,9 @@ class PowerOutputChart extends Component {
         backgroundColor: this.powerLineBackgroundColor,
         borderColor: this.powerLineBorderColor,
         borderWidth: 1,
-        pointRadius: this.state.pointRadius
+        pointBackgroundColor: this.powerLineBorderColor,
+        pointRadius: this.state.pointRadius,
+        pointHoverRadius: this.state.pointRadius
       }]
     };
 

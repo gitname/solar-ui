@@ -128,16 +128,12 @@ class EnergyStorageChart extends Component {
         data: this.state.occupiedBarValues,
         backgroundColor: this.occupiedBarBackgroundColors,
         borderColor: this.vacantBarBorderColors,
-        hoverBackgroundColor: this.occupiedBarBackgroundColors,
-        hoverBorderColor: this.vacantBarBorderColors,
         borderWidth: 1
       }, {
         label: this.vacantBarLabel,
         data: this.state.vacantBarValues,
         backgroundColor: this.vacantBarBackgroundColors,
         borderColor: this.vacantBarBorderColors,
-        hoverBackgroundColor: this.vacantBarBackgroundColors,
-        hoverBorderColor: this.vacantBarBorderColors,
         borderWidth: 1
       }]
     };
