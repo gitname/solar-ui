@@ -2,12 +2,6 @@ import {_initialPanels} from './panelsReducer';
 
 describe('_initialPanels', function () {
 
-  let array;
-
-  beforeEach(() => {
-    array = _initialPanels;
-  });
-
   test('panels are initialized', () => {
     expect(_initialPanels.length).toBe(8);
     expect(_initialPanels[2].enabled).toBe(false); // Panel with ID of '3'
