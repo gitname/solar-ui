@@ -50,36 +50,40 @@ class PanelStatusTable extends Component {
     });
 
     return (
-      <Table celled compact definition className='panel-status-table'>
-        <Table.Header fullWidth>
-          <Table.Row>
-            <Table.HeaderCell>Enabled</Table.HeaderCell>
-            <Table.HeaderCell>Panel</Table.HeaderCell>
-            <Table.HeaderCell>Solar Radiance</Table.HeaderCell>
-            <Table.HeaderCell>Output Voltage</Table.HeaderCell>
-            <Table.HeaderCell>Output Current</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <div className="panel-status-table--wrapper">
 
-        <Table.Body>{rows}</Table.Body>
+        <Table unstackable celled compact definition className='panel-status-table--table'>
+          <Table.Header fullWidth>
+            <Table.Row>
+              <Table.HeaderCell>Enabled</Table.HeaderCell>
+              <Table.HeaderCell>Panel</Table.HeaderCell>
+              <Table.HeaderCell>Solar Radiance</Table.HeaderCell>
+              <Table.HeaderCell>Output Voltage</Table.HeaderCell>
+              <Table.HeaderCell>Output Current</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-        <Table.Footer fullWidth>
-          <Table.Row>
-            <Table.HeaderCell colSpan='7'>
-              <Button.Group size='small'>
-                <Button basic color='green' onClick={this.disableAllPanels.bind(this)}>Disable All</Button>
-                <Button color='green' onClick={this.enableAllPanels.bind(this)}>Enable All</Button>
-              </Button.Group>
+          <Table.Body>{rows}</Table.Body>
 
-              <Button size='small' color='green' icon labelPosition='left' floated='right'
-                      onClick={PanelStatusTable.forkOnGitHub}>
-                <Icon name='fork'/> Fork on GitHub
-              </Button>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
+          <Table.Footer fullWidth>
+            <Table.Row>
+              <Table.HeaderCell colSpan='7'>
+                <Button.Group size='small'>
+                  <Button basic color='green' onClick={this.disableAllPanels.bind(this)}>Disable All</Button>
+                  <Button color='green' onClick={this.enableAllPanels.bind(this)}>Enable All</Button>
+                </Button.Group>
 
-      </Table>
+                <Button size='small' color='green' icon labelPosition='left' floated='right'
+                        onClick={PanelStatusTable.forkOnGitHub}>
+                  <Icon name='fork'/> Fork on GitHub
+                </Button>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+
+        </Table>
+
+      </div>
     );
   }
 }
