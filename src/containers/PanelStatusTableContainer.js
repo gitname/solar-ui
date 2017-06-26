@@ -9,8 +9,8 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = {
-  enablePanels: enablePanels,
-  disablePanels: disablePanels
+  enablePanels,
+  disablePanels
 };
 
 const PanelStatusTableContainer = connect(

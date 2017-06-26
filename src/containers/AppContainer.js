@@ -10,8 +10,8 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = {
-  updateStoredEnergies: updateStoredEnergies,
-  updateInputRadiances: updateInputRadiances
+  updateStoredEnergies,
+  updateInputRadiances
 };
 
 const AppContainer = connect(
