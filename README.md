@@ -26,7 +26,7 @@ Solar UI has the following features:
 * **Interactive Charts**: When the visitor hovers over a data point in a chart, the chart displays a tooltip containing information about that data point 
 * **Interactive Table**: When the visitor clicks on an "Enabled" toggle slider, the associated solar panel will become enabled or disabled (whichever is the opposite of its previous state)
 * **Responsive Layout**: 
-    * **Stacking Components**: On narrow screens, the various panels are stacked atop one another
+    * **Stacked Panels**: On narrow screens, the various panels stack vertically
     * **Mobile Menu**: On narrow screens, a side navigation menu becomes available
 
 \* Note: `output power` = `output voltage` × `output current`
