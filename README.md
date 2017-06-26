@@ -4,6 +4,10 @@
 
 Solar UI is an example user interface for a dashboard a solar panel company might provide to each of its customers, which those customers could use to manage their solar panel systems.
 
+## Screenshot
+
+![Screenshot](https://github.com/gitname/solar-ui/blob/master/screenshot.png)
+
 ## Technologies
 
 Solar UI was built using the following technologies:
