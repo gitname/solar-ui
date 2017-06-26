@@ -22,7 +22,7 @@ Solar UI has the following features:
 * **Data Generation**: Continuously generates new solar panel input radiance values using constrained random number generation 
 * **Data Relationships**: 
     * **Panel Input/Output**: When a solar panel is "enabled," its output current is calculated as a function of its input radiance
-    * **Inverter Output**: The inverter output power is calculated as a function of the output power of all solar panels combined
+    * **Inverter Output**: The inverter output power is calculated as a function of the output power* of all solar panels combined
 * **Interactive Charts**: When the visitor hovers over a data point in a chart, the chart displays a tooltip containing information about that data point 
 * **Interactive Table**: When the visitor clicks on an "Enabled" toggle slider, the associated solar panel will become enabled or disabled (whichever is the opposite of its previous state)
 * **Responsive Layout**: 
