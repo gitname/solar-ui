@@ -37,7 +37,7 @@ Solar UI has the following limitations:
 
 * **Lack of Hyperlink Destinations**: None of the hyperlinks—with one exception—point to anything. The exception is the "Fork on GitHub" button, which points to this repository on GitHub. In contrast, the "Solar Panels," "Inverters," and "Batteries" hyperlinks, for example, don't point to anything.
 * **Static "Latest Events" content**: The "Latest Events" panel contains static content only. In other words, the content does not change over time or in response to any events occurring.
-* **Independent "Stored Energy" values**: Although they do change over time, the stored energy values depicted in the "Energy Storage" chart are independent of any other values shown in the UI, such as the "Solar Radiance" values or the "Power Output" values.
+* **Independent "Energy Storage" values**: Although they do change over time, the values depicted in the "Energy Storage" chart are independent of any other values shown in the UI, such as the "Solar Radiance" values or the "Power Output" values.
 
 ## Demo
  
