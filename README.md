@@ -32,7 +32,7 @@ Solar UI has the following features:
 * **Responsive Layout**: 
     * **Stacked Panels**: On narrow screens, the various panels stack vertically
     * **Mobile Menu**: On narrow screens, a side navigation menu becomes available
-* **Redux DevTools Extension-Enabled**: Curious visitors can monitor the dispatching of Redux actions and examine their contents, by using the [Redux DevTools Extension](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwigt4uLn9rUAhVGxmMKHVOxAdYQFggwMAE&url=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fredux-devtools%2Flmhkpmbekcpmknklioeibfkpmmfibljd%3Fhl%3Den&usg=AFQjCNFg4ldS78uapjCGBaNjL9NvIwZGhg) for Google Chrome   
+* **Redux DevTools Extension-Enabled**: Curious visitors can monitor the dispatching of Redux actions and examine their contents, by using the [Redux DevTools Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for Google Chrome   
 
 \* Note: `output power` = `output voltage` × `output current`
 
