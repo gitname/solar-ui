@@ -41,8 +41,9 @@ Solar UI has the following features:
 Solar UI has the following limitations:
 
 * **Lack of Hyperlink Destinations**: None of the hyperlinks—with one exception—point to anything. The exception is the "Fork on GitHub" button, which points to this repository on GitHub.
-* **Static "Latest Events" content**: The "Latest Events" panel contains static content only. In other words, the content does not change over time or in response to any events occurring.
-* **Independent "Energy Storage" values**: Although they do change over time, the values depicted in the "Energy Storage" chart are independent of any other values shown in the UI, such as the "Solar Radiance" values or the "Power Output" values.
+* **Static "Latest Events" Content**: The "Latest Events" panel contains static content only. In other words, the content does not change over time or in response to any events occurring.
+* **Independent "Energy Storage" Values**: Although they do change over time, the values depicted in the "Energy Storage" chart are independent of any other values shown in the UI, such as the "Solar Radiance" values or the "Power Output" values.
+* **Static Chart Data in Internet Explorer 11**: In Internet Explorer 11, although the table does display new data over time, the charts do not. That's because [`react-chartjs-2`](https://github.com/gor181/react-chartjs-2) (i.e. the chart library Solar UI uses)—and, therefore, Solar UI—uses [a function that doesn't exist in Internet Explorer 11](https://github.com/gor181/react-chartjs-2/blob/master/lib/index.js#L211).
 
 ## FAQ
 
