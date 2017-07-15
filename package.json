@@ -6,12 +6,12 @@
   "dependencies": {
     "chart.js": "^2.6.0",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-chartjs-2": "^2.1.0",
-    "react-dom": "^15.5.4",
+    "react": "^15.6.1",
+    "react-chartjs-2": "^2.5.0",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.0",
-    "semantic-ui-css": "^2.2.10",
+    "redux": "^3.7.2",
+    "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.68.5"
   },
   "devDependencies": {
