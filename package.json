@@ -12,7 +12,7 @@
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.2.11",
-    "semantic-ui-react": "^0.68.5"
+    "semantic-ui-react": "^0.71.0"
   },
   "devDependencies": {
     "gh-pages": "^1.0.0",
