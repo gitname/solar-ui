@@ -10,13 +10,13 @@
     "react-chartjs-2": "^2.5.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-scripts": "1.0.8",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0"
   },
   "devDependencies": {
-    "gh-pages": "^1.0.0",
-    "react-scripts": "1.0.7"
+    "gh-pages": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

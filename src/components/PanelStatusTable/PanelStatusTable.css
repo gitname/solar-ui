@@ -8,11 +8,11 @@
 
 @media (max-width: 767px) {
     .panel-status-table--table .buttons {
-        margin: 0 0.25rem 1rem 0 !important
+        margin: 0 0.25rem 1rem 0;
     }
 
     .panel-status-table--table .right.floated.button {
-        float: none !important;
-        margin-left: 0 !important;
+        float: none;
+        margin-left: 0;
     }
 }

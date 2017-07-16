@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import combinedReducer from './reducers';
-import AppContainer from './containers/AppContainer';
-import registerServiceWorker from './registerServiceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
+
+import AppContainer from './containers/AppContainer';
+import registerServiceWorker from './registerServiceWorker';
 
 const appStore = createStore(
   combinedReducer,
