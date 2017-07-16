@@ -24,9 +24,6 @@ class PowerOutputChart extends Component {
 
     this.options = {
       maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
       scales: {
         xAxes: [{
           scaleLabel: {
@@ -68,6 +65,10 @@ class PowerOutputChart extends Component {
           }
         }
       }
+    };
+
+    this.legend = {
+      display: false
     };
 
     const initialTotalOutputPowerHistory = [null, null, null, null, null, null].map(() => {
@@ -131,7 +132,7 @@ class PowerOutputChart extends Component {
 
     return (
       <div className='power-output-chart--chart-wrapper'>
-        <Line data={data} options={this.options}/>
+        <Line data={data} options={this.options} legend={this.legend}/>
       </div>
     );
   }

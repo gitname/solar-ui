@@ -16,9 +16,6 @@ class SolarRadianceChart extends Component {
 
     this.options = {
       maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
       scales: {
         xAxes: [{
           scaleLabel: {
@@ -59,6 +56,10 @@ class SolarRadianceChart extends Component {
         }
       }
     };
+
+    this.legend = {
+      display: false
+    };
   }
 
   render() {
@@ -87,7 +88,7 @@ class SolarRadianceChart extends Component {
 
     return (
       <div className='solar-radiance-chart--chart-wrapper'>
-        <Bar data={data} options={this.options}/>
+        <Bar data={data} options={this.options} legend={this.legend}/>
       </div>
     );
   }

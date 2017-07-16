@@ -39,9 +39,6 @@ class EnergyStorageChart extends Component {
 
     this.options = {
       maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
       hover: {
         animationDuration: 0,
       },
@@ -83,6 +80,10 @@ class EnergyStorageChart extends Component {
         }
       }
     };
+
+    this.legend = {
+      display: false
+    };
   }
 
   render() {
@@ -120,7 +121,7 @@ class EnergyStorageChart extends Component {
 
     return (
       <div className='energy-storage-chart--chart-wrapper'>
-        <Bar data={data} options={this.options}/>
+        <Bar data={data} options={this.options} legend={this.legend}/>
       </div>
     );
   }
