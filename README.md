@@ -16,6 +16,7 @@ Solar UI was built using the following technologies:
 * Redux
 * Semantic UI
 * Chart.js
+* Moment.js
 * Jest
 * ECMAScript 2015/ES6
 
