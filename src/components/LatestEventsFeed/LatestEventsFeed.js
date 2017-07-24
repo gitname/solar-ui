@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {Feed, Icon} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './LatestEventsFeed.css';
 
 class LatestEventsFeed extends Component {
@@ -70,5 +71,9 @@ class LatestEventsFeed extends Component {
     );
   }
 }
+
+LatestEventsFeed.propTypes = {
+  events: PropTypes.array.isRequired
+};
 
 export default LatestEventsFeed;

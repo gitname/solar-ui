@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
+import PropTypes from 'prop-types';
 import palette from '../../lib/color';
 import './EnergyStorageChart.css';
 
@@ -126,5 +127,9 @@ class EnergyStorageChart extends Component {
     );
   }
 }
+
+EnergyStorageChart.propTypes = {
+  batteries: PropTypes.array.isRequired
+};
 
 export default EnergyStorageChart;
