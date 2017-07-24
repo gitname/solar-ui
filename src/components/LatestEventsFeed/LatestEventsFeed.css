@@ -1,16 +1,24 @@
-.latest-events-feed--content {
+.latest-events-feed--event-content {
     margin-top: 0.25em !important;
 }
 
-.latest-events-feed--summary {
+.latest-events-feed--event-summary {
     font-weight: 400 !important;
 }
 
-.latest-events-feed--date {
+.latest-events-feed--event-date {
     font-size: .85714286em !important;
 }
 
-.latest-events-feed--popup-trigger {
-    cursor: help;
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+.latest-events-feed--event-date:hover {
+    cursor: default;
+}
+
+.latest-events-feed--event--enter {
+    opacity: 0.01;
+}
+
+.latest-events-feed--event--enter.latest-events-feed--event--enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
 }

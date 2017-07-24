@@ -25,6 +25,18 @@ class PanelStatusTable extends Component {
     this.props.disablePanels(panelIds);
   }
 
+  allPanelsAreEnabled() {
+    return this.props.panels.every((panel) => {
+      return (panel.enabled === true);
+    });
+  }
+
+  allPanelsAreDisabled() {
+    return this.props.panels.every((panel) => {
+      return (panel.enabled === false);
+    });
+  }
+
   static getPanelIds(panels) {
     return panels.map((panel) => panel.id);
   }
@@ -69,8 +81,8 @@ class PanelStatusTable extends Component {
             <Table.Row>
               <Table.HeaderCell colSpan='7'>
                 <Button.Group size='small'>
-                  <Button basic color='green' onClick={this.disableAllPanels.bind(this)}>Disable All</Button>
-                  <Button color='green' onClick={this.enableAllPanels.bind(this)}>Enable All</Button>
+                  <Button basic color='green' disabled={this.allPanelsAreDisabled()} onClick={this.disableAllPanels.bind(this)}>Disable All</Button>
+                  <Button color='green' disabled={this.allPanelsAreEnabled()} onClick={this.enableAllPanels.bind(this)}>Enable All</Button>
                 </Button.Group>
 
                 <Button size='small' color='green' icon labelPosition='left' floated='right'

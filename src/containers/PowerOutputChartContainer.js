@@ -3,7 +3,7 @@ import PowerOutputChart from '../components/PowerOutputChart/PowerOutputChart';
 
 const mapStateToProps = function (state) {
   return {
-    panels: state.panels
+    panels: state.panelCollection.panels
   };
 };
 

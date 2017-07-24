@@ -4,7 +4,7 @@ import PanelStatusTable from '../components/PanelStatusTable/PanelStatusTable';
 
 const mapStateToProps = function (state) {
   return {
-    panels: state.panels
+    panels: state.panelCollection.panels
   };
 };
 

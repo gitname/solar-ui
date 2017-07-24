@@ -3,7 +3,7 @@ import {Container, Grid, Header, Segment} from 'semantic-ui-react';
 import SolarRadianceChartContainer from "../../containers/SolarRadianceChartContainer";
 import PowerOutputChartContainer from "../../containers/PowerOutputChartContainer";
 import EnergyStorageChartContainer from "../../containers/EnergyStorageChartContainer";
-import LatestEventsFeed from "../LatestEventsFeed/LatestEventsFeed";
+import LatestEventsFeedContainer from "../../containers/LatestEventsFeedContainer";
 import PanelStatusTableContainer from "../../containers/PanelStatusTableContainer";
 import './OverviewPageContent.css';
 
@@ -38,7 +38,7 @@ class OverviewPageContent extends Component {
             <Segment>
               <Header icon='clock' content='Latest Events'/>
               <p>Latest events involving the system.</p>
-              <LatestEventsFeed/>
+              <LatestEventsFeedContainer/>
             </Segment>
           </Grid.Column>
           <Grid.Column width={16}>

@@ -5,7 +5,7 @@ import App from '../components/App/App';
 const mapStateToProps = function (state) {
   return {
     batteries: state.batteries,
-    panels: state.panels
+    panels: state.panelCollection.panels
   };
 };
 

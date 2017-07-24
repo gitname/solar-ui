@@ -2,13 +2,16 @@ export const _outputVoltageVSetting = 24;
 export const _outputCurrentA_to_inputRadianceKWM2_ratio = 4.5; // outputCurrent [A] ÷ inputRadiance [kW/m²]
 
 /**
- * Clones an array of `panel` objects.
+ * Clones a `panelCollection` object.
  *
- * @param panels - The array you want to clone.
- * @returns [] - The new array.
+ * @param panelCollection - The `panelCollection` object you want to clone.
+ * @return {{panels: Array, events: Array}} - The new `panelCollection` object.
  */
-export const clonePanels = function (panels = []) {
-  return panels.map((panel) => ({...panel}));
+export const clonePanelCollection = function (panelCollection = {panels: [], events: []}) {
+  return {
+    panels: panelCollection.panels.map((panel) => ({...panel})),
+    events: panelCollection.events.map((event) => ({...event}))
+  };
 };
 
 /**
@@ -17,6 +20,7 @@ export const clonePanels = function (panels = []) {
  * @param panels - Array containing the `panel` objects.
  * @param panelIds - Array containing the ID of each `panel` object you want to enable or disable.
  * @param enable - Boolean indicating whether to enable (true) or disable (false) the panels.
+ * @private
  */
 export const _enableDisablePanels = function (panels = [], panelIds = [], enable = true) {
   panels.forEach((panel) => {
@@ -56,6 +60,7 @@ export const disablePanels = function (panels = [], panelIds = []) {
  * real-life, instantly affect other properties, we reconcile them (i.e. apply those effects) here.
  *
  * @param panel - The `panel` object.
+ * @private
  */
 export const _reconcilePanelProperties = function (panel) {
   const outputCurrentA = panel.inputRadianceKWM2 * _outputCurrentA_to_inputRadianceKWM2_ratio;
@@ -77,4 +82,47 @@ export const updateInputRadiances = function (panels, newInputRadiancesByPanelId
       _reconcilePanelProperties(panel);
     }
   });
+};
+
+/**
+ * Returns a string that describes which panels (out of those in `panels`) are identified by `panelIds`.
+ *
+ * @param panels
+ * @param panelIds
+ * @return {string}
+ */
+export const getIdentifiedPanelsDescription = function (panels, panelIds) {
+  const identifiesAllPanels = _containsAllPanelIds(panels, panelIds);
+  let description;
+  if (identifiesAllPanels) {
+    description = 'all panels';
+  } else {
+    description = (panelIds.length === 1 ? 'panel ' : 'panels ') + panelIds.join(', ');
+  }
+  return description;
+};
+
+/**
+ * Returns `true` if `panelIds` contains the ID of each panel in `panels`; otherwise returns `false`.
+ *
+ * @param panels
+ * @param panelIds
+ * @return {boolean|*}
+ * @private
+ */
+export const _containsAllPanelIds = function (panels, panelIds) {
+  return panels.every((panel) => {
+    return (panelIds.indexOf(panel.id) !== -1);
+  });
+};
+
+/**
+ * Modifies the `events` array passed in, by removing its first element and appending `newEvent` to the `events` array.
+ *
+ * @param events
+ * @param newEvent
+ */
+export const addEvent = function (events, newEvent) {
+  events.shift();
+  events.push(newEvent);
 };

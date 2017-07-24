@@ -5,12 +5,14 @@
   "homepage": "http://gitname.github.io/solar-ui",
   "dependencies": {
     "chart.js": "^2.6.0",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-chartjs-2": "^2.5.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-scripts": "1.0.10",
+    "react-transition-group": "^2.2.0",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0"

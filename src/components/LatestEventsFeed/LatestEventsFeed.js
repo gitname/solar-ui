@@ -1,60 +1,70 @@
 import React, {Component} from 'react';
-import {Feed, Icon, Popup} from 'semantic-ui-react';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import {Feed, Icon} from 'semantic-ui-react';
 import './LatestEventsFeed.css';
 
 class LatestEventsFeed extends Component {
   render() {
+    const events = this.props.events.map((event) => {
+      let iconName,
+        iconColor;
+      switch (event.type) {
+        case 'enable':
+          iconName = 'check circle outline';
+          iconColor = 'grey';
+          break;
+        case 'disable':
+          iconName = 'remove circle outline';
+          iconColor = 'grey';
+          break;
+        default:
+          iconName = 'clock';
+          iconColor = 'grey';
+          break;
+      }
+
+      // Format the timestamp.
+      //
+      // TODO: Consider formatting the timestamp using moment.js functionality instead of using raw JavaScript.
+      // Reference: http://momentjs.com/docs/#/customization/calendar/
+      // Reference: http://momentjs.com/docs/#/customization/long-date-formats/
+      //
+      let formattedTimestamp = event.timestamp.calendar();
+      if (formattedTimestamp.substr(-3) === ' AM') {
+        formattedTimestamp = formattedTimestamp.substr(0, formattedTimestamp.length - 3) + 'am';
+      } else {
+        formattedTimestamp = formattedTimestamp.substr(0, formattedTimestamp.length - 3) + 'pm';
+      }
+
+      return (
+        <CSSTransition
+          key={event.timestamp}
+          classNames='latest-events-feed--event-'
+          timeout={{enter: 500}}
+          exit={false}>
+
+          <Feed.Event>
+            <Feed.Label>
+              <Icon name={iconName} color={iconColor}/>
+            </Feed.Label>
+            <Feed.Content className='latest-events-feed--event-content'>
+              <Feed.Date className='latest-events-feed--event-date' title={event.timestamp.toString()}>
+                {formattedTimestamp}
+              </Feed.Date>
+              <Feed.Summary className='latest-events-feed--event-summary'>
+                {event.summary}
+              </Feed.Summary>
+            </Feed.Content>
+          </Feed.Event>
+
+        </CSSTransition>
+      );
+    });
+
     return (
-      <Feed>
+      <Feed as={TransitionGroup}>
 
-        <Feed.Event>
-          <Feed.Label>
-            <Icon name='full battery'/>
-          </Feed.Label>
-          <Feed.Content className='latest-events-feed--content'>
-            <Feed.Date className='latest-events-feed--date'>
-              Today at 6:12am
-            </Feed.Date>
-            <Feed.Summary className='latest-events-feed--summary'>
-              <a title='View Battery 2 details'>Battery 2</a> is full.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-          <Feed.Label>
-            <Icon name='desktop'/>
-          </Feed.Label>
-          <Feed.Content className='latest-events-feed--content'>
-            <Feed.Date className='latest-events-feed--date'>
-              Yesterday at 1:21pm
-            </Feed.Date>
-            <Feed.Summary className='latest-events-feed--summary'>
-              You signed in from <Popup
-              trigger={<span className='latest-events-feed--popup-trigger'>a new device</span>}
-              header={'Marty\'s MacBook Pro'}
-              content='IP: 172.217.5.100'
-              position='right center'
-              size='tiny'
-              inverted
-            />.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-          <Feed.Label>
-            <Icon name='low battery'/>
-          </Feed.Label>
-          <Feed.Content className='latest-events-feed--content'>
-            <Feed.Date className='latest-events-feed--date'>
-              Yesterday at 8:39am
-            </Feed.Date>
-            <Feed.Summary className='latest-events-feed--summary'>
-              <a title='View Battery 3 details'>Battery 3</a> is low.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
+        {events}
 
       </Feed>
     );

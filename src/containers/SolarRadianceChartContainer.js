@@ -3,7 +3,7 @@ import SolarRadianceChart from '../components/SolarRadianceChart/SolarRadianceCh
 
 const mapStateToProps = function (state) {
   return {
-    panels: state.panels
+    panels: state.panelCollection.panels
   };
 };
 

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 // Each of these functions returns a Redux action.
 
 export const toggleSidebarVisibility = function () {
@@ -10,7 +12,8 @@ export const enablePanels = function (panelIds) {
   return {
     type: 'ENABLE_PANELS',
     payload: {
-      panelIds: panelIds
+      panelIds: panelIds,
+      timestamp: moment()
     }
   };
 };
@@ -19,7 +22,8 @@ export const disablePanels = function (panelIds) {
   return {
     type: 'DISABLE_PANELS',
     payload: {
-      panelIds: panelIds
+      panelIds: panelIds,
+      timestamp: moment()
     }
   };
 };
