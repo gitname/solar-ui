@@ -7,20 +7,16 @@ import './LatestEventsFeed.css';
 class LatestEventsFeed extends Component {
   render() {
     const events = this.props.events.map((event) => {
-      let iconName,
-        iconColor;
+      let iconName;
       switch (event.type) {
         case 'enable':
           iconName = 'check circle outline';
-          iconColor = 'grey';
           break;
         case 'disable':
           iconName = 'remove circle outline';
-          iconColor = 'grey';
           break;
         default:
           iconName = 'clock';
-          iconColor = 'grey';
           break;
       }
 
@@ -46,7 +42,7 @@ class LatestEventsFeed extends Component {
 
           <Feed.Event>
             <Feed.Label>
-              <Icon name={iconName} color={iconColor}/>
+              <Icon name={iconName}/>
             </Feed.Label>
             <Feed.Content className='latest-events-feed--event-content'>
               <Feed.Date className='latest-events-feed--event-date' title={event.timestamp.toString()}>
