@@ -37,7 +37,7 @@ class LatestEventsFeed extends Component {
         <CSSTransition
           key={event.timestamp}
           classNames='latest-events-feed--event-'
-          timeout={{enter: 500}}
+          timeout={{enter: 5000}}
           exit={false}>
 
           <Feed.Event>
