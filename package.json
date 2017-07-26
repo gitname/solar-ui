@@ -2,7 +2,7 @@
   "name": "solar-ui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://gitname.github.io/solar-ui",
+  "homepage": "https://gitname.github.io/solar-ui",
   "dependencies": {
     "chart.js": "^2.6.0",
     "moment": "^2.18.1",
