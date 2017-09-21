@@ -17,6 +17,7 @@ Solar UI was built using the following technologies:
 * Semantic UI
 * Chart.js
 * Moment.js
+* Fetch API
 * Jest
 * ECMAScript 2015/ES6
 
@@ -30,10 +31,11 @@ Solar UI has the following features:
     * **Inverter Output**: The inverter output power is calculated as a function of the output power* of all solar panels combined
 * **Interactive Charts**: When the visitor hovers over a data point in a chart, the chart displays a tooltip containing information about that data point 
 * **Interactive Table**: When the visitor clicks on an "Enabled" toggle slider, the associated solar panel will become enabled or disabled (whichever is the opposite of its previous state)
+* **Redux DevTools Extension-Enabled**: Curious visitors can monitor the dispatching of Redux actions and examine their contents, by using the [Redux DevTools Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for Google Chrome   
 * **Responsive Layout**: 
     * **Stacked Panels**: On narrow screens, the various panels stack vertically
     * **Mobile Menu**: On narrow screens, a side navigation menu becomes available
-* **Redux DevTools Extension-Enabled**: Curious visitors can monitor the dispatching of Redux actions and examine their contents, by using the [Redux DevTools Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for Google Chrome   
+* **REST API Utilization**: Retrieves the mock username from the [Reqres](https://reqres.in/) REST API
 
 \* Note: `output power` = `output voltage` × `output current`
 
