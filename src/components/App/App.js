@@ -47,13 +47,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Sidebar.Pushable>
         <VerticalNavBarContainer/>
-        <Sidebar.Pusher>
+        <Sidebar.Pusher dimmed={this.props.sidebarVisible}>
           <HorizontalNavBarContainer/>
           <OverviewPageContent/>
         </Sidebar.Pusher>
-      </div>
+      </Sidebar.Pushable>
     );
   }
 }
