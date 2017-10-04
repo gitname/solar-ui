@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {updateInputRadiances, updateStoredEnergies} from '../actions';
+import {toggleSidebarVisibility, updateInputRadiances, updateStoredEnergies} from '../actions';
 import App from '../components/App/App';
 
 const mapStateToProps = function (state) {
@@ -11,6 +11,7 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = {
+  toggleSidebarVisibility,
   updateStoredEnergies,
   updateInputRadiances
 };

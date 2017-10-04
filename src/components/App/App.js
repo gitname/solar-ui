@@ -45,11 +45,20 @@ class App extends Component {
     this.props.updateStoredEnergies(newStoredEnergiesByBatteryId);
   }
 
+  /**
+   * Hides the sidebar if the sidebar is visible.
+   */
+  hideSidebarIfVisible() {
+    if (this.props.sidebarVisible === true) {
+      this.props.toggleSidebarVisibility();
+    }
+  }
+
   render() {
     return (
       <Sidebar.Pushable>
-        <VerticalNavBarContainer/>
-        <Sidebar.Pusher dimmed={this.props.sidebarVisible}>
+        <VerticalNavBarContainer toggleSidebarVisibility={this.props.toggleSidebarVisibility}/>
+        <Sidebar.Pusher onClick={this.hideSidebarIfVisible.bind(this)} dimmed={this.props.sidebarVisible}>
           <HorizontalNavBarContainer/>
           <OverviewPageContent/>
         </Sidebar.Pusher>
@@ -60,6 +69,8 @@ class App extends Component {
 
 App.propTypes = {
   panels: PropTypes.array.isRequired,
+  sidebarVisible: PropTypes.bool.isRequired,
+  toggleSidebarVisibility: PropTypes.func.isRequired,
   updateInputRadiances: PropTypes.func.isRequired
 };
 

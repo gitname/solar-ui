@@ -6,8 +6,8 @@ import './VerticalNavBar.css';
 class VerticalNavBar extends Component {
   render() {
     return (
-      <Sidebar as={Menu} animation='overlay' vertical inverted size='large' visible={this.props.visible}>
-        <Menu.Item onClick={this.props.toggleSidebar}>
+      <Sidebar as={Menu} animation='overlay' vertical inverted size='large' visible={this.props.sidebarVisible}>
+        <Menu.Item onClick={this.props.toggleSidebarVisibility}>
           <span>
             <Icon name='remove'/>
           </span>
@@ -24,8 +24,8 @@ class VerticalNavBar extends Component {
 }
 
 VerticalNavBar.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  toggleSidebar: PropTypes.func.isRequired
+  sidebarVisible: PropTypes.bool.isRequired,
+  toggleSidebarVisibility: PropTypes.func.isRequired
 };
 
 export default VerticalNavBar;
