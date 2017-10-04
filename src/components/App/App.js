@@ -68,10 +68,12 @@ class App extends Component {
 }
 
 App.propTypes = {
+  batteries: PropTypes.array.isRequired,
   panels: PropTypes.array.isRequired,
   sidebarVisible: PropTypes.bool.isRequired,
   toggleSidebarVisibility: PropTypes.func.isRequired,
-  updateInputRadiances: PropTypes.func.isRequired
+  updateInputRadiances: PropTypes.func.isRequired,
+  updateStoredEnergies: PropTypes.func.isRequired
 };
 
 export default App;
