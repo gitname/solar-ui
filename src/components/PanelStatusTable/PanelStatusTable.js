@@ -53,7 +53,7 @@ class PanelStatusTable extends Component {
             <Checkbox slider checked={panel.enabled} name={'' + panel.id}
                       onChange={this.handleCheckboxChange.bind(this)}/>
           </Table.Cell>
-          <Table.Cell><a title={'View Panel ' + panel.id + ' details'}>{panel.id}</a></Table.Cell>
+          <Table.Cell className="panel-status-table--data-cell"><a title={'View Panel ' + panel.id + ' details'}>{panel.id}</a></Table.Cell>
           <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.inputRadianceKWM2.toFixed(2)} kW/m²</Table.Cell>
           <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputVoltageV.toFixed(2)} V</Table.Cell>
           <Table.Cell disabled={!panel.enabled} className="panel-status-table--data-cell">{panel.outputCurrentA.toFixed(2)} A</Table.Cell>
