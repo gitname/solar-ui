@@ -22,14 +22,14 @@ class OverviewPageContent extends Component {
           </Grid.Column>
           <Grid.Column computer={8} largeScreen={4} widescreen={4}>
             <Segment>
-              <Header icon='dashboard' content='Power Output'/>
+              <Header icon='tachometer alternate' content='Power Output'/>
               <p>Power output by the inverter.</p>
               <PowerOutputChartContainer/>
             </Segment>
           </Grid.Column>
           <Grid.Column computer={8} largeScreen={4} widescreen={4}>
             <Segment>
-              <Header icon='high battery' content='Energy Storage'/>
+              <Header icon='battery three quarters' content='Energy Storage'/>
               <p>Energy stored in each battery.</p>
               <EnergyStorageChartContainer/>
             </Segment>
@@ -43,7 +43,7 @@ class OverviewPageContent extends Component {
           </Grid.Column>
           <Grid.Column width={16}>
             <Segment>
-              <Header icon='options' content='Panel Status'/>
+              <Header icon='sliders horizontal' content='Panel Status'/>
               <p>Status of each panel.</p>
               <PanelStatusTableContainer/>
             </Segment>

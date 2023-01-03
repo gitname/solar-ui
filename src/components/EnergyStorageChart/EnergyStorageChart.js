@@ -62,7 +62,8 @@ class EnergyStorageChart extends Component {
           stacked: true,
           ticks: {
             beginAtZero: true,
-            suggestedMax: 15
+            suggestedMax: 15,
+            stepSize: 5,
           }
         }]
       },

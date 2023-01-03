@@ -33,7 +33,8 @@ class SolarRadianceChart extends Component {
           },
           ticks: {
             beginAtZero: true,
-            suggestedMax: 1
+            suggestedMax: 1,
+            stepSize: 0.2,
           }
         }]
       },

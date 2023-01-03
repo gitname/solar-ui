@@ -13,10 +13,10 @@ class LatestEventsFeed extends Component {
           iconName = 'check circle outline';
           break;
         case 'disable':
-          iconName = 'remove circle outline';
+          iconName = 'times circle outline';
           break;
         default:
-          iconName = 'clock';
+          iconName = 'clock outline';
           break;
       }
 
