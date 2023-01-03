@@ -3,6 +3,9 @@ import {Icon, Menu, Sidebar} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './VerticalNavBar.css';
 
+// Helper function that displays an alert containing the text content of the clicked element.
+const onClickLink = (event) => alert(`You clicked the ${event.target.textContent.trim()} link.`);
+
 class VerticalNavBar extends Component {
   render() {
     return (
@@ -14,10 +17,10 @@ class VerticalNavBar extends Component {
         </Menu.Item>
 
         <Menu.Item as='a' active>Overview</Menu.Item>
-        <Menu.Item as='a'>Solar Panels</Menu.Item>
-        <Menu.Item as='a'>Inverters</Menu.Item>
-        <Menu.Item as='a'>Batteries</Menu.Item>
-        <Menu.Item as='a'>My Account</Menu.Item>
+        <Menu.Item as='a' onClick={onClickLink}>Solar Panels</Menu.Item>
+        <Menu.Item as='a' onClick={onClickLink}>Inverters</Menu.Item>
+        <Menu.Item as='a' onClick={onClickLink}>Batteries</Menu.Item>
+        <Menu.Item as='a' onClick={onClickLink}>My Account</Menu.Item>
       </Sidebar>
     );
   }

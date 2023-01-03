@@ -3,6 +3,9 @@ import {Container, Dropdown, Icon, Menu} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './HorizontalNavBar.css';
 
+// Helper function that displays an alert containing the text content of the clicked element.
+const onClickLink = (event) => alert(`You clicked the ${event.target.textContent.trim()} link.`);
+
 class HorizontalNavBar extends Component {
   constructor(props) {
     super(props);
@@ -56,22 +59,22 @@ class HorizontalNavBar extends Component {
           <Menu.Item as='a' icon='sidebar' onClick={this.props.toggleSidebar}
                      className='hidden-on-small-monitor hidden-on-large-monitor'/>
 
-          <Menu.Item as='a' header>
+          <Menu.Item as='a' onClick={onClickLink} header>
             <Icon name='sun' color='yellow'/> MySolarSystem
           </Menu.Item>
           <Menu.Item as='a' className='hidden-on-tablet hidden-on-phone' active>Overview</Menu.Item>
-          <Menu.Item as='a' className='hidden-on-tablet hidden-on-phone'>Solar Panels</Menu.Item>
-          <Menu.Item as='a' className='hidden-on-tablet hidden-on-phone'>Inverters</Menu.Item>
-          <Menu.Item as='a' className='hidden-on-tablet hidden-on-phone'>Batteries</Menu.Item>
+          <Menu.Item as='a' onClick={onClickLink} className='hidden-on-tablet hidden-on-phone'>Solar Panels</Menu.Item>
+          <Menu.Item as='a' onClick={onClickLink} className='hidden-on-tablet hidden-on-phone'>Inverters</Menu.Item>
+          <Menu.Item as='a' onClick={onClickLink} className='hidden-on-tablet hidden-on-phone'>Batteries</Menu.Item>
 
           <Menu.Menu position='right' className='hidden-on-tablet hidden-on-phone'>
             <Dropdown item icon='dropdown' text={this.state.userName}>
               <Dropdown.Menu>
-                <Dropdown.Item icon='user' text='Profile'/>
-                <Dropdown.Item icon='setting' text='Settings'/>
-                <Dropdown.Item icon='help circle' text='Help'/>
+                <Dropdown.Item onClick={onClickLink} icon='user' text='Profile'/>
+                <Dropdown.Item onClick={onClickLink} icon='setting' text='Settings'/>
+                <Dropdown.Item onClick={onClickLink} icon='help circle' text='Help'/>
                 <Dropdown.Divider/>
-                <Dropdown.Item icon='log out' text='Sign out'/>
+                <Dropdown.Item onClick={onClickLink} icon='log out' text='Sign out'/>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
